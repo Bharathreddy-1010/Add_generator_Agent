@@ -1,0 +1,146 @@
+{
+  "theme": "flat-motion-graphics",
+  "cuts": [
+    {
+      "id": "cwt-hook",
+      "source": "",
+      "type": "hero_title",
+      "in_seconds": 0.0,
+      "out_seconds": 3.0,
+      "text": "84% OF RETAIL TRADERS ARE WRONG.",
+      "heroSubtitle": "When social sentiment screams 'buy', smart money prepares the exit.",
+      "backgroundColor": "#0A0F1D"
+    },
+    {
+      "id": "cwt-pain-stat",
+      "source": "",
+      "type": "stat_card",
+      "in_seconds": 3.0,
+      "out_seconds": 10.0,
+      "stat": "-$4,250",
+      "subtitle": "Average retail drawdown from moving stop losses into euphoric hype.",
+      "accentColor": "#EF4444",
+      "backgroundColor": "#0A0F1D"
+    },
+    {
+      "id": "cwt-spy-divergence",
+      "source": "",
+      "type": "bar_chart",
+      "in_seconds": 10.0,
+      "out_seconds": 18.0,
+      "title": "SPY Sentiment Divergence Signal (Case Study)",
+      "chartData": [
+        {
+          "label": "Retail Bull Hype",
+          "value": 84
+        },
+        {
+          "label": "Market Drop (Trap)",
+          "value": 32
+        },
+        {
+          "label": "CWT Reversal Capture",
+          "value": 76
+        }
+      ],
+      "chartColors": [
+        "#EF4444",
+        "#F59E0B",
+        "#10B981"
+      ],
+      "showGrid": true,
+      "showValues": true,
+      "backgroundColor": "#0A0F1D"
+    },
+    {
+      "id": "cwt-data-breakdown",
+      "source": "",
+      "type": "pie_chart",
+      "in_seconds": 18.0,
+      "out_seconds": 26.0,
+      "title": "Aggregating 16,420+ Real-Time Market Sources",
+      "donut": true,
+      "centerLabel": "16,420+",
+      "centerValue": "Sources",
+      "chartData": [
+        {
+          "label": "FinTwit Sentiment",
+          "value": 45
+        },
+        {
+          "label": "Reddit Subreddits",
+          "value": 35
+        },
+        {
+          "label": "Financial Wire Feeds",
+          "value": 20
+        }
+      ],
+      "chartColors": [
+        "#3B82F6",
+        "#8B5CF6",
+        "#10B981"
+      ],
+      "showLegend": true,
+      "backgroundColor": "#0A0F1D"
+    },
+    {
+      "id": "cwt-comparison",
+      "source": "",
+      "type": "comparison_card",
+      "in_seconds": 26.0,
+      "out_seconds": 33.0,
+      "title": "Traditional Lagging Indicators vs CrowdWisdom",
+      "leftLabel": "12 Lagging Indicators",
+      "leftValue": "Conflicting signals\nVisual screen fatigue\nConstant FOMO trap",
+      "rightLabel": "CrowdWisdom Consensus",
+      "rightValue": "Decisive crowd sentiment\n76% reversal predictive accuracy\nZero chart indicator clutter",
+      "backgroundColor": "#0A0F1D",
+      "accentColor": "#10B981"
+    },
+    {
+      "id": "cwt-cta-card",
+      "source": "",
+      "type": "text_card",
+      "in_seconds": 33.0,
+      "out_seconds": 39.0,
+      "text": "Stop Guessing. Trade The Consensus.",
+      "subtitle": "crowdwisdomtrading.com \u2014 Free Screening Tools Included.",
+      "color": "#10B981",
+      "backgroundColor": "#0A0F1D"
+    }
+  ],
+  "overlays": [
+    {
+      "type": "stat_reveal",
+      "in_seconds": 1.2,
+      "out_seconds": 3.8,
+      "text": "84% Hype Trap",
+      "subtitle": "Institutional Liquidity Exit",
+      "accentColor": "#EF4444",
+      "position": "bottom-right"
+    },
+    {
+      "type": "section_title",
+      "in_seconds": 3.5,
+      "out_seconds": 6.0,
+      "text": "The Retail Trap",
+      "subtitle": "Why indicators fail during high volatility",
+      "accentColor": "#F59E0B"
+    }
+  ],
+  "captions": [],
+  "audio": {
+    "narration": {
+      "src": "assets/cwt_master_voiceover.wav",
+      "volume": 1.0
+    },
+    "music": {
+      "src": "assets/ambient_bed.wav",
+      "volume": 0.18,
+      "fadeInSeconds": 1.0,
+      "fadeOutSeconds": 1.5,
+      "loop": true
+    }
+  }
+}

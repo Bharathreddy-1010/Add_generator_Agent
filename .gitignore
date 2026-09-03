@@ -37,9 +37,16 @@ wheels/
 data/ads/raw/
 outputs/assets/
 outputs/renders/
+outputs/*.mp4
 kanban.db-journal
 *.aiff
 *.wav
+
+# Remotion Composer
+remotion-composer/node_modules/
+remotion-composer/out/
+remotion-composer/public/assets/
+remotion-composer/.remotion/
 
 # Keep placeholders in git
 !.gitkeep

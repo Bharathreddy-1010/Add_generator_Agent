@@ -33,6 +33,10 @@ from agents.creative_critic import CreativeCriticAgent
 from agents.video_agent import VideoAgent
 
 console = Console()
+try:
+    sys.stdout.reconfigure(line_buffering=True)
+except Exception:
+    pass
 
 
 def setup_logging(debug: bool = False) -> None:
