@@ -3,7 +3,7 @@
   "time_window_days": 30,
   "total_found": 15,
   "shortlisted_count": 5,
-  "generated_at": "2026-09-03T19:51:00.885958",
+  "generated_at": "2026-09-03T20:27:20.015012",
   "source_summary": "Verified Meta Ad Library Fixtures (Demo)",
   "is_mock_data": true,
   "ads": [
@@ -25,7 +25,7 @@
       "pain_strength": 9.0,
       "offer_clarity": 8.5,
       "marketing_angle": "Indicator overload & visual fatigue",
-      "extracted_at": "2026-09-03T19:51:00.885925"
+      "extracted_at": "2026-09-03T20:27:20.014978"
     },
     {
       "ad_id": "meta_cwt_ad_102",
@@ -45,7 +45,7 @@
       "pain_strength": 9.2,
       "offer_clarity": 8.9,
       "marketing_angle": "FOMO & latency disadvantage vs institutions",
-      "extracted_at": "2026-09-03T19:51:00.885938"
+      "extracted_at": "2026-09-03T20:27:20.014994"
     },
     {
       "ad_id": "meta_cwt_ad_103",
@@ -65,7 +65,7 @@
       "pain_strength": 8.8,
       "offer_clarity": 8.6,
       "marketing_angle": "Emotional hesitation and moving stop losses",
-      "extracted_at": "2026-09-03T19:51:00.885942"
+      "extracted_at": "2026-09-03T20:27:20.014999"
     },
     {
       "ad_id": "meta_cwt_ad_104",
@@ -85,7 +85,7 @@
       "pain_strength": 9.4,
       "offer_clarity": 8.7,
       "marketing_angle": "Herd mentality trap vs collective wisdom",
-      "extracted_at": "2026-09-03T19:51:00.885949"
+      "extracted_at": "2026-09-03T20:27:20.015002"
     },
     {
       "ad_id": "meta_cwt_ad_105",
@@ -105,7 +105,7 @@
       "pain_strength": 8.0,
       "offer_clarity": 8.2,
       "marketing_angle": "Time scarcity and pre-market preparation anxiety",
-      "extracted_at": "2026-09-03T19:51:00.885953"
+      "extracted_at": "2026-09-03T20:27:20.015005"
     }
   ]
 }

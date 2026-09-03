@@ -1,7 +1,7 @@
 {
   "query": "retail trader pain points indicator overload fomo Reddit 2026",
   "engine": "tavily",
-  "generated_at": "2026-09-03T19:52:20.156314",
+  "generated_at": "2026-09-03T20:29:25.740800",
   "is_mock_data": false,
   "total_sources_found": 5,
   "key_themes": [
@@ -11,59 +11,59 @@
   ],
   "items": [
     {
-      "title": "FOMO Trading: How to Recognize It and Stop It With Data (2026)",
-      "url": "https://www.tradezella.com/blog/fomo-trading",
-      "publication_date": "2026-09-03",
-      "source": "www.tradezella.com",
-      "extracted_insight": "Widening stops. You enter a trade and it goes slightly against you. Your stop says to exit at -1%. Instead, you move the stop wider because you \"know\" it's going to reverse. What you're actually doing is refusing to accept that the trade might be wrong. This single behavior destroys your risk-reward ratio and makes even winning trades unprofitable ",
-      "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 5.973971000000001,
-      "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T19:52:20.156146"
-    },
-    {
-      "title": "FOMO: what it is, why it matters and how to navigate it in 2026? | Swissquote",
-      "url": "https://www.swissquote.com/en-ch/private/inspire/blog/trading-strategies/fomo-what-it-why-it-matters-and-how-navigate-it-2026",
-      "publication_date": "2026-09-03",
-      "source": "www.swissquote.com",
-      "extracted_insight": "Herd Mentality: Humans often assume collective choices are correct. Herd-driven buying can yield short-term gains but risks overvaluation (e.g., GameStop, AMC, AI surges).\n Regret Aversion: Fear of missing profits can push trades at market peaks, overriding analysis.\n Recency Bias: Overemphasis on recent performance leads traders to ignore longer-t",
-      "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 5.32839,
-      "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T19:52:20.156206"
-    },
-    {
-      "title": "Most annoying pain points as a trader : r/Trading - Reddit",
+      "title": "Most annoying pain points as a trader : r/Trading",
       "url": "https://www.reddit.com/r/Trading/comments/1t9xw8y/most_annoying_pain_points_as_a_trader",
       "publication_date": "2026-09-03",
       "source": "www.reddit.com",
-      "extracted_insight": "Even with AI tools, the hardest part is definitely the \"6 inches between your ears.\" FOMO is a beast! Traders know the rules, then break them",
+      "extracted_insight": "Drop your biggest pain point below, genuinely curious. FOMO is a beast! biggest gap is getting realistic reps before live pressure. Traders",
       "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 5.0461469999999995,
+      "relevance_score": 3.8539833000000003,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T19:52:20.156237"
+      "timestamp_retrieved": "2026-09-03T20:29:25.740641"
     },
     {
-      "title": "The TradingView Indicators Reddit Actually Uses in 2026 ...",
-      "url": "https://www.linkedin.com/pulse/tradingview-indicators-reddit-actually-uses-2026-we-sdsic",
+      "title": "FOMO Exhaustion Indicator",
+      "url": "https://usethinkscript.com/threads/fomo-exhaustion-indicator.13679",
       "publication_date": "2026-09-03",
-      "source": "www.linkedin.com",
-      "extracted_insight": "Reddit's indicator consensus gets treated like a settled question because it is repeated so often. Volume, VWAP, RSI, MACD, moving averages, and",
+      "source": "usethinkscript.com",
+      "extracted_insight": "Then, I, the retail trader begins to get FOMO, I jump in and BOOM, the market reverses. Or, you’re in a trade with your stop in place. Price starts moving against you. Price moves to your stop, takes it out, then bounces. You tell yourself, If only I had moved my stop a little wider. What I am thinking is when the volume begins to decline and the t",
       "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 4.3007612,
+      "relevance_score": 3.6398646,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T19:52:20.156261"
+      "timestamp_retrieved": "2026-09-03T20:29:25.740697"
     },
     {
-      "title": "What are some pain points while trading? - Reddit",
+      "title": "What are your biggest pain points in trading?",
+      "url": "https://www.reddit.com/r/Trading/comments/1nnhu7o/what_are_your_biggest_pain_points_in_trading",
+      "publication_date": "2026-09-03",
+      "source": "www.reddit.com",
+      "extracted_insight": "One of my biggest pain points used to be sticking to discipline, especially after a loss when the urge to overtrade kicked in.",
+      "target_icp": "Active Retail Swing & Day Trader",
+      "relevance_score": 1.8763861000000002,
+      "recency_window": "Last 30 Days",
+      "timestamp_retrieved": "2026-09-03T20:29:25.740727"
+    },
+    {
+      "title": "Been trading full-time for almost 7 years now ….here's one ...",
+      "url": "https://www.reddit.com/r/Daytrading/comments/1m5o7i8/been_trading_fulltime_for_almost_7_years_now",
+      "publication_date": "2026-09-03",
+      "source": "www.reddit.com",
+      "extracted_insight": "TL;DR: No matter how long you've been trading, you'll still feel FOMO, hesitation, and nerves. Mastery in trading = emotional control, not",
+      "target_icp": "Active Retail Swing & Day Trader",
+      "relevance_score": 1.195625,
+      "recency_window": "Last 30 Days",
+      "timestamp_retrieved": "2026-09-03T20:29:25.740752"
+    },
+    {
+      "title": "What are some pain points while trading?",
       "url": "https://www.reddit.com/r/Trading/comments/1l860os/what_are_some_pain_points_while_trading",
       "publication_date": "2026-09-03",
       "source": "www.reddit.com",
-      "extracted_insight": "Execution without emotion. Journaling consistently. Sticking to a system after a win streak. The psychology side is the real beast, most tools",
+      "extracted_insight": "I'll be upfront, I'm doing market research for a product made for traders and investors and this place felt like the perfect place to ask. I've been trying",
       "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 3.6385083000000003,
+      "relevance_score": 0.8146875,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T19:52:20.156283"
+      "timestamp_retrieved": "2026-09-03T20:29:25.740774"
     }
   ]
 }

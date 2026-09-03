@@ -45,10 +45,10 @@ class TavilySearchClient:
             logger.info(f"[Tavily] Searching live web: '{query}' (days={days})...")
             response = self.client.search(
                 query=query,
-                search_depth="advanced",
+                search_depth="basic",
                 days=days,
                 max_results=max_results,
-                include_answer=True
+                include_answer=False
             )
 
             raw_results = response.get("results", [])
