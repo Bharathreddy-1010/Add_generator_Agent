@@ -1,59 +1,69 @@
 {
   "query": "retail trader pain points indicator overload fomo Reddit 2026",
-  "engine": "tavily_demo_fixture",
-  "generated_at": "2026-09-03T19:16:53.841493",
-  "is_mock_data": true,
-  "total_sources_found": 4,
+  "engine": "tavily",
+  "generated_at": "2026-09-03T19:52:20.156314",
+  "is_mock_data": false,
+  "total_sources_found": 5,
   "key_themes": [
     "Severe indicator overload leading to conflicting signals",
-    "Buying into social media exit liquidity (FOMO)",
-    "Lack of objective conviction causing premature profit exits and running losses",
-    "Proven statistical superiority of collective intelligence over single-guru bias"
+    "Emotional revenge trading after sudden volatility spikes",
+    "Distrust in black-box algorithms and desire for transparent consensus"
   ],
   "items": [
     {
-      "title": "Why 90% of retail traders still lose despite 100 YouTube tutorials",
-      "url": "https://www.reddit.com/r/Daytrading/comments/retail_trader_syndrome_2026",
-      "publication_date": "2026-08-22",
-      "source": "reddit.com/r/Daytrading",
-      "extracted_insight": "Traders experience severe 'analysis paralysis' from mixing MACD, RSI, ICT order blocks, and Elliot Wave. The real bottleneck is lack of objective trade conviction, causing traders to exit winners too early and let losers run.",
-      "target_icp": "Active Retail Day/Swing Trader",
-      "relevance_score": 9.6,
+      "title": "FOMO Trading: How to Recognize It and Stop It With Data (2026)",
+      "url": "https://www.tradezella.com/blog/fomo-trading",
+      "publication_date": "2026-09-03",
+      "source": "www.tradezella.com",
+      "extracted_insight": "Widening stops. You enter a trade and it goes slightly against you. Your stop says to exit at -1%. Instead, you move the stop wider because you \"know\" it's going to reverse. What you're actually doing is refusing to accept that the trade might be wrong. This single behavior destroys your risk-reward ratio and makes even winning trades unprofitable ",
+      "target_icp": "Active Retail Swing & Day Trader",
+      "relevance_score": 5.973971000000001,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-02T14:22:00Z"
+      "timestamp_retrieved": "2026-09-03T19:52:20.156146"
     },
     {
-      "title": "The FinTwit Echo Chamber: How social media hype lures retail into liquidity traps",
-      "url": "https://x.com/fintwit_insights/status/1826001928374829102",
-      "publication_date": "2026-08-26",
-      "source": "x.com",
-      "extracted_insight": "By the time a stock or crypto setup is trending on X or TikTok, retail buying volume represents exit liquidity for early callers. Retail traders desperately need tools that decode sentiment *before* it peaks.",
-      "target_icp": "Crypto & Equity Momentum Trader",
-      "relevance_score": 9.4,
+      "title": "FOMO: what it is, why it matters and how to navigate it in 2026? | Swissquote",
+      "url": "https://www.swissquote.com/en-ch/private/inspire/blog/trading-strategies/fomo-what-it-why-it-matters-and-how-navigate-it-2026",
+      "publication_date": "2026-09-03",
+      "source": "www.swissquote.com",
+      "extracted_insight": "Herd Mentality: Humans often assume collective choices are correct. Herd-driven buying can yield short-term gains but risks overvaluation (e.g., GameStop, AMC, AI surges).\n Regret Aversion: Fear of missing profits can push trades at market peaks, overriding analysis.\n Recency Bias: Overemphasis on recent performance leads traders to ignore longer-t",
+      "target_icp": "Active Retail Swing & Day Trader",
+      "relevance_score": 5.32839,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-02T14:23:00Z"
+      "timestamp_retrieved": "2026-09-03T19:52:20.156206"
     },
     {
-      "title": "Retail Trader Psychology in High-Volatility Regimes",
-      "url": "https://financialmarketjournal.com/research/retail-psychology-volatility-2026",
-      "publication_date": "2026-08-19",
-      "source": "financialmarketjournal.com",
-      "extracted_insight": "Survey of 1,200 active retail accounts revealed that 73% of losses occur due to revenge trading following a single stopped-out trade. Structured execution plans with pre-calculated invalidation levels cut account blow-ups by 58%.",
-      "target_icp": "Intermediate Swing Trader",
-      "relevance_score": 9.3,
+      "title": "Most annoying pain points as a trader : r/Trading - Reddit",
+      "url": "https://www.reddit.com/r/Trading/comments/1t9xw8y/most_annoying_pain_points_as_a_trader",
+      "publication_date": "2026-09-03",
+      "source": "www.reddit.com",
+      "extracted_insight": "Even with AI tools, the hardest part is definitely the \"6 inches between your ears.\" FOMO is a beast! Traders know the rules, then break them",
+      "target_icp": "Active Retail Swing & Day Trader",
+      "relevance_score": 5.0461469999999995,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-02T14:24:00Z"
+      "timestamp_retrieved": "2026-09-03T19:52:20.156237"
     },
     {
-      "title": "Collective Intelligence vs Single Expert Bias in Market Forecasting",
-      "url": "https://quantitativefinanceinsights.org/papers/crowd-wisdom-markets-2026",
-      "publication_date": "2026-08-15",
-      "source": "quantitativefinanceinsights.org",
-      "extracted_insight": "Aggregating independent predictions across a distributed network of experienced traders consistently outperforms single celebrity market forecasters by dampening individual emotional biases.",
-      "target_icp": "Data-Driven Independent Trader",
-      "relevance_score": 9.5,
+      "title": "The TradingView Indicators Reddit Actually Uses in 2026 ...",
+      "url": "https://www.linkedin.com/pulse/tradingview-indicators-reddit-actually-uses-2026-we-sdsic",
+      "publication_date": "2026-09-03",
+      "source": "www.linkedin.com",
+      "extracted_insight": "Reddit's indicator consensus gets treated like a settled question because it is repeated so often. Volume, VWAP, RSI, MACD, moving averages, and",
+      "target_icp": "Active Retail Swing & Day Trader",
+      "relevance_score": 4.3007612,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-02T14:25:00Z"
+      "timestamp_retrieved": "2026-09-03T19:52:20.156261"
+    },
+    {
+      "title": "What are some pain points while trading? - Reddit",
+      "url": "https://www.reddit.com/r/Trading/comments/1l860os/what_are_some_pain_points_while_trading",
+      "publication_date": "2026-09-03",
+      "source": "www.reddit.com",
+      "extracted_insight": "Execution without emotion. Journaling consistently. Sticking to a system after a win streak. The psychology side is the real beast, most tools",
+      "target_icp": "Active Retail Swing & Day Trader",
+      "relevance_score": 3.6385083000000003,
+      "recency_window": "Last 30 Days",
+      "timestamp_retrieved": "2026-09-03T19:52:20.156283"
     }
   ]
 }

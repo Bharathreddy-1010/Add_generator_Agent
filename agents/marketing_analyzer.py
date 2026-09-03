@@ -61,6 +61,7 @@ class MarketingAnalyzerAgent(BaseAgent):
             response_model=MarketingAnalysisReport,
             fallback_factory=fallback_analysis
         )
+        report.is_mock_data = self.settings.demo_mode or not self.llm.client
 
         decision = (
             f"Identified primary market gap: Competitors push complex chart indicators; "

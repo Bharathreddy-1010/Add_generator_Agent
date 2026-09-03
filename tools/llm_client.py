@@ -65,13 +65,17 @@ class StructuredLLMClient:
                 return fallback_factory()
             raise ValueError("No LLM client available and no fallback factory provided.")
 
+        schema_json = json.dumps(response_model.model_json_schema(), indent=2)
         system_instruction = (
             f"{system_prompt}\n\n"
+            f"You MUST format your response as a JSON object conforming strictly to this JSON Schema:\n"
+            f"{schema_json}\n\n"
             "CRITICAL INSTRUCTIONS:\n"
-            "1. Output ONLY valid, parseable JSON matching the requested schema.\n"
-            "2. Do NOT wrap output in markdown codeblocks (no ```json).\n"
-            "3. Do NOT hallucinate financial performance or fake promises.\n"
-            "4. Be strictly grounded in the provided factual context."
+            "1. Output ONLY valid, parseable JSON.\n"
+            "2. Ensure top-level keys match the schema properties exactly.\n"
+            "3. Do NOT wrap output in markdown codeblocks (no ```json).\n"
+            "4. Do NOT hallucinate financial performance or fake promises.\n"
+            "5. Be strictly grounded in the provided factual context."
         )
 
         for attempt in range(max_retries + 1):
