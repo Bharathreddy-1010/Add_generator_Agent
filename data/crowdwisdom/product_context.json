@@ -1,0 +1,36 @@
+{
+  "product_name": "CrowdWisdomTrading",
+  "website": "https://crowdwisdomtrading.com",
+  "founder": "Gilad Bar-Ilan",
+  "founder_experience_years": 25,
+  "core_value_proposition": "Transform noisy market chatter into clear, high-conviction trade ideas using AI-driven collective intelligence.",
+  "target_audience": {
+    "primary_icp": "Active retail swing and day traders in equities, crypto, and forex",
+    "experience_level": "Intermediate (1-5 years trading experience)",
+    "current_behavior": "Follows multiple Telegram groups, X/Twitter threads, Discord channels, and YouTube analysts, leading to analysis paralysis and emotional entries"
+  },
+  "offerings": {
+    "free_tier": [
+      "Weekly Market Outlook Newsletter",
+      "Telegram Community Access",
+      "Trading Psychology Insights",
+      "20 Free Prediction Credits"
+    ],
+    "pro_tier": {
+      "price": "$29.99/month or discounted annual",
+      "features": [
+        "Daily & Weekly Execution-Ready Trade Plans",
+        "Actionable Entry, Target, and Invalidation Stop Levels",
+        "Institutional & Crowd Sentiment Divergence Tracking",
+        "Real-Time Consensus Dashboards",
+        "Verified Transparent Track Record"
+      ]
+    }
+  },
+  "compliance_and_safety_rules": [
+    "No guaranteed profit claims",
+    "No risk-free trading promises",
+    "No unrealistic 90%+ win rate claims",
+    "Position as a research, market intelligence, and decision-support tool"
+  ]
+}

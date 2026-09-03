@@ -1,0 +1,102 @@
+{
+  "evaluated_at": "2026-09-03T19:15:05.012009",
+  "evaluations": [
+    {
+      "ad_id": "CWT-STORYBOARD-02-UNIQUE-DATA",
+      "concept_title": "The 78% Reversal Signal",
+      "concept_type": "unique_data",
+      "scores": {
+        "hook_strength": 9.6,
+        "originality": 9.4,
+        "visual_potential": 9.5,
+        "pain_relevance": 9.3,
+        "icp_relevance": 9.4,
+        "product_relevance": 9.8,
+        "credibility": 9.5,
+        "clarity": 9.2,
+        "emotional_impact": 9.1,
+        "cta_strength": 9.0
+      },
+      "composite_score": 9.41,
+      "strengths": [
+        "Highest originality: anchors directly in CWT's proprietary divergence data",
+        "Vox-style dynamic chart animation creates unmatched visual stopping power",
+        "Establishes institutional credibility with Gilad Bar-Ilan's 25-year track record",
+        "Low friction CTA with 20 free predictions"
+      ],
+      "weaknesses": [
+        "Requires crisp typography to explain divergence in under 7 seconds"
+      ],
+      "refinement_recommendations": [
+        "Amplify the first 3 seconds with a loud heart-rate monitor alarm and red flash",
+        "Emphasize the 16,420+ sources radar visual to prove genuine crowd intelligence"
+      ]
+    },
+    {
+      "ad_id": "CWT-STORYBOARD-01-PAIN-ICP",
+      "concept_title": "The Solo Trader Trap",
+      "concept_type": "pain_icp",
+      "scores": {
+        "hook_strength": 9.4,
+        "originality": 8.5,
+        "visual_potential": 9.2,
+        "pain_relevance": 9.6,
+        "icp_relevance": 9.5,
+        "product_relevance": 9.1,
+        "credibility": 9.3,
+        "clarity": 9.0,
+        "emotional_impact": 9.2,
+        "cta_strength": 8.8
+      },
+      "composite_score": 9.19,
+      "strengths": [
+        "Immediate visual hook in first 2 seconds directly addresses the viewer's biggest fear (buying into liquidity trap)",
+        "Visually dramatic transition from 14 chaotic indicators to clean CWT cockpit",
+        "Universal resonance with all retail traders suffering from analysis paralysis"
+      ],
+      "weaknesses": [
+        "Scene 2 could risk looking too technical if indicator clutter is not stylized cleanly"
+      ],
+      "refinement_recommendations": [
+        "Ensure split screen in Scene 1 uses neon cyan vs urgent red contrast",
+        "Keep on-screen text punchy and readable on small mobile screens"
+      ]
+    },
+    {
+      "ad_id": "CWT-STORYBOARD-03-CWT-VALUE",
+      "concept_title": "Execution Over Emotion",
+      "concept_type": "cwt_results",
+      "scores": {
+        "hook_strength": 8.8,
+        "originality": 8.2,
+        "visual_potential": 8.6,
+        "pain_relevance": 9.1,
+        "icp_relevance": 9.0,
+        "product_relevance": 8.9,
+        "credibility": 9.2,
+        "clarity": 9.4,
+        "emotional_impact": 8.7,
+        "cta_strength": 8.7
+      },
+      "composite_score": 8.85,
+      "strengths": [
+        "Strong emotional pain point around hesitating and moving stop-losses",
+        "Very clean visual presentation of the 3-tier execution plan"
+      ],
+      "weaknesses": [
+        "Opening hook has slightly lower pattern-interrupt than Concept 1 and Concept 2"
+      ],
+      "refinement_recommendations": [
+        "Speed up pacing in Scene 1 to create immediate tension"
+      ]
+    }
+  ],
+  "winner_ad_id": "CWT-STORYBOARD-02-UNIQUE-DATA",
+  "winner_title": "The 78% Reversal Signal",
+  "selection_rationale": "Highest originality: anchors directly in CWT's proprietary divergence data Combined with highest composite score across all criteria.",
+  "winner_improvements_applied": [
+    "Enhanced visual hook with high-contrast split screen and divergence alert",
+    "Streamlined on-screen text for maximum mobile readability",
+    "Fine-tuned scene pacing for 30-40s social media engagement"
+  ]
+}

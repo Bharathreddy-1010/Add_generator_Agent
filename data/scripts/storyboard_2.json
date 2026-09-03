@@ -1,0 +1,100 @@
+{
+  "ad_id": "CWT-STORYBOARD-02-UNIQUE-DATA",
+  "type": "unique_data",
+  "title": "The 78% Reversal Signal",
+  "target_icp": "Skeptical data-driven traders looking for authentic institutional edge",
+  "core_pain": "Getting trapped at market tops as retail exit liquidity",
+  "marketing_angle": "Empirical Divergence & 16,420-Trader Collective Intelligence",
+  "visual_hook": {
+    "headline": "RETAIL HYPE: 84% LONG vs 76% DIVERGENCE",
+    "visual_description": "Fast ticking FOMO counter slamming into bright red divergence alert.",
+    "audio_cue": "Alarm pulse into deep electronic sub bass drop",
+    "duration_seconds": 3.0
+  },
+  "total_duration_seconds": 39.0,
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "duration": 3.0,
+      "visual": "High-contrast Vox-style counter rapidly rolling up: 'RETAIL FOMO: 84% LONG' suddenly flashes RED.",
+      "camera": "Fast tilt-down with dynamic motion blur",
+      "voiceover": "When 84% of retail traders are screaming 'buy' on social media, you're usually looking at a trap.",
+      "on_screen_text": "RETAIL HYPE: 84% LONG ⚠️\nINSTITUTIONAL TRAP INCOMING",
+      "sound_effect": "alarm_heartbeat_drop",
+      "music": "fast_pulse_synth",
+      "transition": "cut"
+    },
+    {
+      "scene_number": 2,
+      "start_time": 3.0,
+      "end_time": 10.0,
+      "duration": 7.0,
+      "visual": "SPY chart showing retail chasing top candles, while CrowdWisdom's proprietary consensus index dives 48 hours earlier.",
+      "camera": "Animated camera tracking the divergence line",
+      "voiceover": "During the last market cycle, our AI detected a 76% institutional divergence 48 hours before the market fell 3.8%.",
+      "on_screen_text": "CASE STUDY: 76% DIVERGENCE DETECTED 48H BEFORE REVERSAL",
+      "sound_effect": "data_ticker_chirp",
+      "music": "analytical_electronic",
+      "transition": "slide_left"
+    },
+    {
+      "scene_number": 3,
+      "start_time": 10.0,
+      "end_time": 18.0,
+      "duration": 8.0,
+      "visual": "Dynamic network visualization showing 16,420 independent trader inputs collapsing into 3 actionable levels.",
+      "camera": "3D node convergence effect",
+      "voiceover": "We monitor over 16,000 active trader sources across YouTube, Reddit, and FinTwit, filtering out bot spam and tracking where real conviction lies.",
+      "on_screen_text": "16,420 TRADERS MONITORED • SMART CONVICTION TRACKED",
+      "sound_effect": "network_lock_sound",
+      "music": "deep_groove",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 4,
+      "start_time": 18.0,
+      "end_time": 26.0,
+      "duration": 8.0,
+      "visual": "Execution card with verified transparent track record badge and founder Gilad Bar-Ilan's 25-year credentials.",
+      "camera": "Slow push in on risk metrics",
+      "voiceover": "Founded by 25-year market veteran Gilad Bar-Ilan, CrowdWisdom gives you transparent, execution-ready signals with pre-defined risk.",
+      "on_screen_text": "TRANSPARENT TRACK RECORD • 25+ YEARS MARKET EXPERIENCE",
+      "sound_effect": "subtle_confirm_ping",
+      "music": "confidence_swell",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 5,
+      "start_time": 26.0,
+      "end_time": 33.0,
+      "duration": 7.0,
+      "visual": "Before/After bar chart showing capital preserved vs retail drawdown.",
+      "camera": "Horizontal sweep",
+      "voiceover": "Don't be someone else's exit liquidity. Use data to trade the reaction, not the hype.",
+      "on_screen_text": "STOP BEING EXIT LIQUIDITY • TRADE WITH VERIFIED DATA",
+      "sound_effect": "whoosh_punch",
+      "music": "epic_drive",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 6,
+      "start_time": 33.0,
+      "end_time": 39.0,
+      "duration": 6.0,
+      "visual": "Cyan & gold CTA card with free access badge and URL.",
+      "camera": "Static impact lockup",
+      "voiceover": "Test CrowdWisdom with 20 free predictions. Visit crowdwisdomtrading.com today.",
+      "on_screen_text": "GET 20 FREE PREDICTIONS\ncrowdwisdomtrading.com",
+      "sound_effect": "clean_bell_ding",
+      "music": "fade_out_pad",
+      "transition": "fade"
+    }
+  ],
+  "cta": "Unlock 20 free prediction credits at crowdwisdomtrading.com",
+  "sources": [
+    "CrowdWisdom SPY Reversal Case Study",
+    "Gilad Bar-Ilan market briefings"
+  ]
+}

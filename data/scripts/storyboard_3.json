@@ -1,0 +1,100 @@
+{
+  "ad_id": "CWT-STORYBOARD-03-CWT-VALUE",
+  "type": "cwt_results",
+  "title": "Execution Over Emotion",
+  "target_icp": "Experienced traders struggling with emotional discipline and moving stop-losses",
+  "core_pain": "Hesitation, revenge trading, lack of conviction in trade setups",
+  "marketing_angle": "Disciplined Structured Execution vs Emotional Second-Guessing",
+  "visual_hook": {
+    "headline": "HESITATING ON ENTRIES? MOVING YOUR STOPS?",
+    "visual_description": "Extreme close-up on trader finger freezing over buy button amidst volatility.",
+    "audio_cue": "Tension string riser into sudden silence",
+    "duration_seconds": 3.0
+  },
+  "total_duration_seconds": 37.0,
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "duration": 3.0,
+      "visual": "A trader's finger hesitating over the buy button as price violently whipsaws up and down.",
+      "camera": "Intense macro close-up on sweating finger",
+      "voiceover": "Hesitating on your entries? Moving your stop-loss mid-trade? That's not a market problem. That's a conviction problem.",
+      "on_screen_text": "HESITATING ON ENTRIES?\nMOVING YOUR STOPS?",
+      "sound_effect": "tension_string_riser",
+      "music": "dark_ambient_tension",
+      "transition": "cut"
+    },
+    {
+      "scene_number": 2,
+      "start_time": 3.0,
+      "end_time": 10.0,
+      "duration": 7.0,
+      "visual": "Split screen showing emotional revenge trade cycle (-$850 loss) vs disciplined trade execution (+Risk Controlled).",
+      "camera": "Fast whip pan to the right",
+      "voiceover": "Over 70% of traders blow accounts because emotions take the wheel the second a trade moves against them.",
+      "on_screen_text": "EMOTIONAL TRADING = ACCOUNT BLOWUPS",
+      "sound_effect": "dull_thud",
+      "music": "steady_rhythmic_beat",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 3,
+      "start_time": 10.0,
+      "end_time": 18.0,
+      "duration": 8.0,
+      "visual": "CrowdWisdom Decision Cockpit loads: Clean 3-tier card displaying Entry, Target 1, Target 2, and Risk Invalidation level.",
+      "camera": "Smooth gliding tracking shot",
+      "voiceover": "CrowdWisdom replaces doubt with structured execution. Every setup comes with pre-calculated entry points, profit targets, and hard risk invalidation levels.",
+      "on_screen_text": "DEFINED ENTRY • TARGET 1 & 2 • HARD INVALIDATION STOP",
+      "sound_effect": "sci_fi_interface_hum",
+      "music": "positive_electronic_arpeggio",
+      "transition": "slide_left"
+    },
+    {
+      "scene_number": 4,
+      "start_time": 18.0,
+      "end_time": 25.0,
+      "duration": 7.0,
+      "visual": "Live consensus dial moving from 50% neutral to 82% bullish conviction with glowing green confirmation checks.",
+      "camera": "Dynamic tilt on glowing dial",
+      "voiceover": "Powered by the collective intelligence of thousands of experienced traders, so you execute with cold, calculated discipline.",
+      "on_screen_text": "EXECUTE WITH COLD DISCIPLINE",
+      "sound_effect": "confirmation_chime",
+      "music": "driving_forward_motion",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 5,
+      "start_time": 25.0,
+      "end_time": 32.0,
+      "duration": 7.0,
+      "visual": "Trader calmly reviewing weekly execution plan with cup of coffee in hand as alert sounds.",
+      "camera": "Clean cinematic medium shot",
+      "voiceover": "Spend less time stressing over charts and more time executing high-probability setups.",
+      "on_screen_text": "LESS STRESS. MORE STRUCTURE.",
+      "sound_effect": "gentle_whoosh",
+      "music": "triumphant_build",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 6,
+      "start_time": 32.0,
+      "end_time": 37.0,
+      "duration": 5.0,
+      "visual": "High-impact finale card with weekly outlook invitation and website URL.",
+      "camera": "Centered hero logo layout",
+      "voiceover": "Join the community. Read our free weekly outlook at crowdwisdomtrading.com.",
+      "on_screen_text": "JOIN THE CROWD EDGE\ncrowdwisdomtrading.com",
+      "sound_effect": "crisp_snare_hit",
+      "music": "resolving_chords",
+      "transition": "fade"
+    }
+  ],
+  "cta": "Join free weekly market outlook at crowdwisdomtrading.com",
+  "sources": [
+    "Retail trading behavioral psychology studies",
+    "CWT Execution Plans"
+  ]
+}

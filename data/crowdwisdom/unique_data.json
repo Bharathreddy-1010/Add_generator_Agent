@@ -1,0 +1,34 @@
+{
+  "dataset_version": "2026.08-LATEST",
+  "crowd_intelligence_metrics": {
+    "total_active_trader_sources_tracked": 16420,
+    "platforms_monitored": ["YouTube Financial Channels", "Reddit (r/stocks, r/wallstreetbets, r/Daytrading)", "X/Twitter FinTwit", "Public Discord Communities"],
+    "daily_prediction_volume": 42500,
+    "sentiment_filtering_accuracy": "89.4% noise reduction on non-actionable bot spam"
+  },
+  "unique_case_studies": [
+    {
+      "case_id": "CWT-CASE-01-SPY-REVERSAL",
+      "ticker": "SPY",
+      "date_range": "Recent Volatility Cycle",
+      "retail_sentiment_gauge": "84% Bullish Call Buying (High FOMO)",
+      "crowdwisdom_consensus_gauge": "76% Bearish Institutional Divergence Detected",
+      "event_outcome": "Market pulled back 3.8% over the next 72 hours; CWT traders were alerted to tighten trailing stops rather than buying the top.",
+      "takeaway": "When the loud crowd is chasing, collective intelligence detects the structural trap."
+    },
+    {
+      "case_id": "CWT-CASE-02-NVDA-MOMENTUM",
+      "ticker": "NVDA",
+      "date_range": "Post-Earnings Consolidation",
+      "retail_sentiment_gauge": "52% Conflicted / Fear of Pullback",
+      "crowdwisdom_consensus_gauge": "81% Bullish Accumulation Consensus across 340+ verified top-decile analysts",
+      "event_outcome": "Breakout confirmed within 48 hours; clear risk level was defined at $118 invalidation.",
+      "takeaway": "CWT separates qualified trader conviction from retail noise."
+    }
+  ],
+  "psychological_trader_statistics": {
+    "retail_failure_rate_stat": "Over 70% of retail day traders quit within one year due to emotional revenge trading and indicator overload.",
+    "average_indicators_used_by_struggling_traders": 6.8,
+    "cwt_simplification_metric": "Consolidates multi-source noise into 3 actionable numbers: Entry Trigger, Price Target, Risk Stop."
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "ad_id": "CWT-STORYBOARD-01-PAIN-ICP",
+  "type": "pain_icp",
+  "title": "The Solo Trader Trap",
+  "target_icp": "Active retail swing and day traders overwhelmed by conflicting indicators",
+  "core_pain": "Analysis paralysis, late entries into social hype, and emotional revenge trading",
+  "marketing_angle": "Indicator Clutter vs Decisive Collective Intelligence",
+  "visual_hook": {
+    "headline": "YOU: BUYING CALLS vs CROWD: DUMPING",
+    "visual_description": "Split-screen retail trade execution vs institutional crowd exit divergence.",
+    "audio_cue": "Record scratch into sudden electronic bass drop",
+    "duration_seconds": 3.0
+  },
+  "total_duration_seconds": 38.0,
+  "scenes": [
+    {
+      "scene_number": 1,
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "duration": 3.0,
+      "visual": "Split-screen glitch: A retail trader eagerly hits BUY CALLS on SPY, while red warning tape flashes across the screen.",
+      "camera": "Fast punch-in zoom into trading button",
+      "voiceover": "You just hit buy on a green breakout candle. But what if 80% of the crowd is already dumping?",
+      "on_screen_text": "YOU: BUYING CALLS ⚠️\nCROWD: DUMPING EXIT LIQUIDITY",
+      "sound_effect": "sub_drop_record_scratch",
+      "music": "high_tension_electronic",
+      "transition": "cut"
+    },
+    {
+      "scene_number": 2,
+      "start_time": 3.0,
+      "end_time": 9.0,
+      "duration": 6.0,
+      "visual": "Screen filled with 14 chaotic overlapping indicators (MACD, RSI, Bollinger Bands). Text overlay strikes them out with red X.",
+      "camera": "Rapid pan across cluttered monitor",
+      "voiceover": "Staring at 14 indicators doesn't give you clarity. It gives you analysis paralysis, late entries, and revenge trading.",
+      "on_screen_text": "14 INDICATORS CANNOT PREVENT REVENGE TRADES",
+      "sound_effect": "glitch_whoosh",
+      "music": "driving_bassline",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 3,
+      "start_time": 9.0,
+      "end_time": 17.0,
+      "duration": 8.0,
+      "visual": "Chaotic screen collapses cleanly into CrowdWisdom's streamlined consensus radar. Glowing blue beam pinpoints true sentiment.",
+      "camera": "Smooth zoom out to sleek dark-mode dashboard",
+      "voiceover": "CrowdWisdom tracks over 16,000 verified trader predictions, stripping out social noise to reveal real market consensus before the move.",
+      "on_screen_text": "16,420+ SOURCES DISTILLED • 89.4% NOISE FILTERED",
+      "sound_effect": "data_sweep_hum",
+      "music": "modern_tech_pulse",
+      "transition": "slide_left"
+    },
+    {
+      "scene_number": 4,
+      "start_time": 17.0,
+      "end_time": 25.0,
+      "duration": 8.0,
+      "visual": "Clear execution plan appears on screen: SPY entry level, upside target, and defined invalidation stop.",
+      "camera": "Static focused macro shot",
+      "voiceover": "No guesswork. Just high-conviction trade ideas with pre-calculated entries, targets, and invalidation stops.",
+      "on_screen_text": "ENTRY: $482.50 • TARGET: $488.20 • DEFINED STOP: $479.80",
+      "sound_effect": "interface_beep_confirm",
+      "music": "focused_momentum",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 5,
+      "start_time": 25.0,
+      "end_time": 32.0,
+      "duration": 7.0,
+      "visual": "Split comparison: Stressed trader staring at messy screen vs disciplined trader calmly following CWT weekly outlook.",
+      "camera": "Side-by-side contrast slider",
+      "voiceover": "Stop trading in a vacuum. Trade with the verified collective intelligence of thousands of market veterans.",
+      "on_screen_text": "STOP GUESSING. TRADE WITH CONSENSUS.",
+      "sound_effect": "uplifting_swell",
+      "music": "inspiring_crescendo",
+      "transition": "fade"
+    },
+    {
+      "scene_number": 6,
+      "start_time": 32.0,
+      "end_time": 38.0,
+      "duration": 6.0,
+      "visual": "High-contrast gold & cyan CTA card with pulsing button and domain crowdwisdomtrading.com.",
+      "camera": "Center locked logo lockup",
+      "voiceover": "Get this week's top 5 crowd consensus trades free. Click below to start.",
+      "on_screen_text": "GET FREE WEEKLY OUTLOOK\ncrowdwisdomtrading.com",
+      "sound_effect": "chime_payoff",
+      "music": "warm_outro_pad",
+      "transition": "fade"
+    }
+  ],
+  "cta": "Get the top 5 crowd consensus trades free at crowdwisdomtrading.com",
+  "sources": [
+    "Reddit r/Daytrading survey 2026",
+    "CWT unique trader psychology data"
+  ]
+}

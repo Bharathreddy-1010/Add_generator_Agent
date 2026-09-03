@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-09-02T16:00:00Z",
+  "is_mock_data": true,
+  "ad_analyses": [
+    {
+      "ad_id": "meta_cwt_ad_101",
+      "advertiser": "TradingView",
+      "target_icp": "Overwhelmed active trader looking for simplification",
+      "pain_points": ["Too many indicators", "Conflicting signals", "Chart fatigue"],
+      "emotional_triggers": ["Frustration", "Overwhelm", "Craving clarity"],
+      "hook": "Stop staring at 12 charts at once",
+      "marketing_angle": "Simplification and clarity",
+      "positioning": "The all-in-one chart workspace",
+      "offer": "Free screening tools with pro upgrade",
+      "objections_handled": ["Is it too complex?", "Do I have to pay immediately?"],
+      "urgency_mechanism": "None",
+      "cta_pattern": "Learn More",
+      "creative_patterns": ["Dark mode UI", "Fast zoom into clean indicator", "Before/after screen comparison"],
+      "messaging_patterns": ["'Most traders fail because...' problem-first statement"]
+    },
+    {
+      "ad_id": "meta_cwt_ad_104",
+      "advertiser": "MarketInOut",
+      "target_icp": "Skeptical retail trader who feels manipulated by institutions",
+      "pain_points": ["Buying tops", "Being used as exit liquidity", "Following bad guru advice"],
+      "emotional_triggers": ["Betrayal", "Suspicion", "Desire for edge"],
+      "hook": "Are you on the right side of the crowd?",
+      "marketing_angle": "Contrarian positioning against retail herd",
+      "positioning": "Institutional volume and sentiment radar",
+      "offer": "Free screener, no credit card required",
+      "objections_handled": ["Do I need credit card?", "Is it accurate?"],
+      "urgency_mechanism": "Market opens in hours",
+      "cta_pattern": "Sign Up Free",
+      "creative_patterns": ["Red vs Green sentiment heatmaps", "Bold contrasting text callouts"],
+      "messaging_patterns": ["'When 90% do X, smart money does Y'"]
+    }
+  ],
+  "aggregated_summary": {
+    "analyzed_ads_count": 5,
+    "common_pain_points": [
+      "Indicator overload and conflicting technical indicators",
+      "Buying late and serving as exit liquidity on Twitter/Reddit hype",
+      "Emotional revenge trading and moving stop losses during drawdown",
+      "Lack of objective conviction in trade direction"
+    ],
+    "common_hooks": [
+      "Negative pattern interrupt ('Stop doing X')",
+      "Contrarian challenge ('Are you on the wrong side of the crowd?')",
+      "Speed/Latency callout ('Why did you find out 30 minutes too late?')"
+    ],
+    "common_marketing_angles": [
+      "Simplification of noisy data into single decisive signal",
+      "Contrarian smart-money vs retail herd positioning",
+      "Automated discipline to remove emotion and hesitation"
+    ],
+    "repeated_concepts": [
+      "Before/After UI contrast (messy multi-chart screen vs single clean cockpit)",
+      "Red vs Green bar charts showing crowd polarity",
+      "Bold ticker symbols (SPY, QQQ, NVDA, BTC) with price targets"
+    ],
+    "market_gaps_and_opportunities": [
+      "Competitors either sell generic chart software or black-box algorithms that users don't trust.",
+      "None show transparent, verifiable crowd consensus from 16,000+ actual trader predictions.",
+      "CrowdWisdomTrading can stand out by proving consensus without selling fake '100% win rate' dreams."
+    ],
+    "crowdwisdom_adaptation_strategy": [
+      "Use high-contrast Vox-style split-screen visuals showing: Retail Hype (85% Buy) vs CWT Consensus (76% Divergence).",
+      "Directly address the emotional exhaustion of solo trading.",
+      "Deliver transparent, execution-ready entry/target/stop structures."
+    ],
+    "compliance_notes": [
+      "Strictly avoid any 'guaranteed profit' or 'make $1,000/day' language.",
+      "Focus on probabilistic edge, discipline, and sentiment intelligence."
+    ]
+  }
+}
