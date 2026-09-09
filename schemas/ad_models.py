@@ -1,6 +1,6 @@
 """Pydantic schemas for Meta Ad models and datasets."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Optional
 from pydantic import BaseModel, Field
 
@@ -26,7 +26,7 @@ class MetaAdRecord(BaseModel):
     pain_strength: float = Field(default=7.0, ge=0.0, le=10.0, description="Relevance to trader pain points")
     offer_clarity: float = Field(default=7.0, ge=0.0, le=10.0, description="Clarity of the value proposition")
     marketing_angle: Optional[str] = Field(default=None, description="Core marketing angle (e.g. FOMO, herd bias, data)")
-    extracted_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat(), description="Extraction timestamp")
+    extracted_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat(), description="Extraction timestamp")
 
 
 class WinningAdsDataset(BaseModel):
@@ -35,7 +35,7 @@ class WinningAdsDataset(BaseModel):
     time_window_days: int = Field(default=30)
     total_found: int
     shortlisted_count: int
-    generated_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    generated_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     source_summary: str = Field(default="Apify Meta Ad Library Actor")
     is_mock_data: bool = Field(default=False, description="True if generated from local fixture dataset")
     ads: List[MetaAdRecord] = Field(default_factory=list)

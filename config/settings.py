@@ -43,7 +43,7 @@ class Settings(BaseSettings):
     video_height: int = Field(default=1920, description="Ad height (9:16 vertical)")
     video_fps: int = Field(default=30, description="Target frames per second")
     voiceover_enabled: bool = Field(default=True, description="Generate audio narration")
-    voiceover_voice: str = Field(default="Samantha", description="macOS TTS voice name or fallback voice")
+    voiceover_voice: str = Field(default="en-US-ChristopherNeural", description="TTS voice name: edge-tts neural voice or macOS male voice")
 
     # Base Paths
     base_dir: Path = Field(default_factory=lambda: Path(__file__).resolve().parent.parent)

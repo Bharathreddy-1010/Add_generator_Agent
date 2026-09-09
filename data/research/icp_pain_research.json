@@ -1,69 +1,59 @@
 {
   "query": "retail trader pain points indicator overload fomo Reddit 2026",
-  "engine": "tavily",
-  "generated_at": "2026-09-03T20:29:25.740800",
-  "is_mock_data": false,
-  "total_sources_found": 5,
+  "engine": "tavily_demo_fixture",
+  "generated_at": "2026-09-08T19:45:11.028840+00:00",
+  "is_mock_data": true,
+  "total_sources_found": 4,
   "key_themes": [
     "Severe indicator overload leading to conflicting signals",
-    "Emotional revenge trading after sudden volatility spikes",
-    "Distrust in black-box algorithms and desire for transparent consensus"
+    "Buying into social media exit liquidity (FOMO)",
+    "Lack of objective conviction causing premature profit exits and running losses",
+    "Proven statistical superiority of collective intelligence over single-guru bias"
   ],
   "items": [
     {
-      "title": "Most annoying pain points as a trader : r/Trading",
-      "url": "https://www.reddit.com/r/Trading/comments/1t9xw8y/most_annoying_pain_points_as_a_trader",
-      "publication_date": "2026-09-03",
-      "source": "www.reddit.com",
-      "extracted_insight": "Drop your biggest pain point below, genuinely curious. FOMO is a beast! biggest gap is getting realistic reps before live pressure. Traders",
-      "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 3.8539833000000003,
+      "title": "Why 90% of retail traders still lose despite 100 YouTube tutorials",
+      "url": "https://www.reddit.com/r/Daytrading/comments/retail_trader_syndrome_2026",
+      "publication_date": "2026-08-22",
+      "source": "reddit.com/r/Daytrading",
+      "extracted_insight": "Traders experience severe 'analysis paralysis' from mixing MACD, RSI, ICT order blocks, and Elliot Wave. The real bottleneck is lack of objective trade conviction, causing traders to exit winners too early and let losers run.",
+      "target_icp": "Active Retail Day/Swing Trader",
+      "relevance_score": 9.6,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T20:29:25.740641"
+      "timestamp_retrieved": "2026-09-02T14:22:00Z"
     },
     {
-      "title": "FOMO Exhaustion Indicator",
-      "url": "https://usethinkscript.com/threads/fomo-exhaustion-indicator.13679",
-      "publication_date": "2026-09-03",
-      "source": "usethinkscript.com",
-      "extracted_insight": "Then, I, the retail trader begins to get FOMO, I jump in and BOOM, the market reverses. Or, you’re in a trade with your stop in place. Price starts moving against you. Price moves to your stop, takes it out, then bounces. You tell yourself, If only I had moved my stop a little wider. What I am thinking is when the volume begins to decline and the t",
-      "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 3.6398646,
+      "title": "The FinTwit Echo Chamber: How social media hype lures retail into liquidity traps",
+      "url": "https://x.com/fintwit_insights/status/1826001928374829102",
+      "publication_date": "2026-08-26",
+      "source": "x.com",
+      "extracted_insight": "By the time a stock or crypto setup is trending on X or TikTok, retail buying volume represents exit liquidity for early callers. Retail traders desperately need tools that decode sentiment *before* it peaks.",
+      "target_icp": "Crypto & Equity Momentum Trader",
+      "relevance_score": 9.4,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T20:29:25.740697"
+      "timestamp_retrieved": "2026-09-02T14:23:00Z"
     },
     {
-      "title": "What are your biggest pain points in trading?",
-      "url": "https://www.reddit.com/r/Trading/comments/1nnhu7o/what_are_your_biggest_pain_points_in_trading",
-      "publication_date": "2026-09-03",
-      "source": "www.reddit.com",
-      "extracted_insight": "One of my biggest pain points used to be sticking to discipline, especially after a loss when the urge to overtrade kicked in.",
-      "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 1.8763861000000002,
+      "title": "Retail Trader Psychology in High-Volatility Regimes",
+      "url": "https://financialmarketjournal.com/research/retail-psychology-volatility-2026",
+      "publication_date": "2026-08-19",
+      "source": "financialmarketjournal.com",
+      "extracted_insight": "Survey of 1,200 active retail accounts revealed that 73% of losses occur due to revenge trading following a single stopped-out trade. Structured execution plans with pre-calculated invalidation levels cut account blow-ups by 58%.",
+      "target_icp": "Intermediate Swing Trader",
+      "relevance_score": 9.3,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T20:29:25.740727"
+      "timestamp_retrieved": "2026-09-02T14:24:00Z"
     },
     {
-      "title": "Been trading full-time for almost 7 years now ….here's one ...",
-      "url": "https://www.reddit.com/r/Daytrading/comments/1m5o7i8/been_trading_fulltime_for_almost_7_years_now",
-      "publication_date": "2026-09-03",
-      "source": "www.reddit.com",
-      "extracted_insight": "TL;DR: No matter how long you've been trading, you'll still feel FOMO, hesitation, and nerves. Mastery in trading = emotional control, not",
-      "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 1.195625,
+      "title": "Collective Intelligence vs Single Expert Bias in Market Forecasting",
+      "url": "https://quantitativefinanceinsights.org/papers/crowd-wisdom-markets-2026",
+      "publication_date": "2026-08-15",
+      "source": "quantitativefinanceinsights.org",
+      "extracted_insight": "Aggregating independent predictions across a distributed network of experienced traders consistently outperforms single celebrity market forecasters by dampening individual emotional biases.",
+      "target_icp": "Data-Driven Independent Trader",
+      "relevance_score": 9.5,
       "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T20:29:25.740752"
-    },
-    {
-      "title": "What are some pain points while trading?",
-      "url": "https://www.reddit.com/r/Trading/comments/1l860os/what_are_some_pain_points_while_trading",
-      "publication_date": "2026-09-03",
-      "source": "www.reddit.com",
-      "extracted_insight": "I'll be upfront, I'm doing market research for a product made for traders and investors and this place felt like the perfect place to ask. I've been trying",
-      "target_icp": "Active Retail Swing & Day Trader",
-      "relevance_score": 0.8146875,
-      "recency_window": "Last 30 Days",
-      "timestamp_retrieved": "2026-09-03T20:29:25.740774"
+      "timestamp_retrieved": "2026-09-02T14:25:00Z"
     }
   ]
 }

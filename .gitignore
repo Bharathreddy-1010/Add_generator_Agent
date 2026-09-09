@@ -38,9 +38,12 @@ data/ads/raw/
 outputs/assets/
 outputs/renders/
 outputs/*.mp4
+!outputs/final_ad.mp4
+!outputs/hermes_kanban_demo.mp4
 kanban.db-journal
 *.aiff
 *.wav
+scratch/
 
 # Remotion Composer
 remotion-composer/node_modules/

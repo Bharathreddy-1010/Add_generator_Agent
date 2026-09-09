@@ -1,6 +1,6 @@
 """Pydantic schemas for marketing analysis of winning competitor and industry ads."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel, Field
 
@@ -46,7 +46,7 @@ class AggregatedMarketingAnalysis(BaseModel):
 
 class MarketingAnalysisReport(BaseModel):
     """Complete container report saved to data/analysis/marketing_analysis.json."""
-    generated_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    generated_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     is_mock_data: bool = Field(default=False)
     ad_analyses: List[SingleAdAnalysis] = Field(default_factory=list)
     aggregated_summary: AggregatedMarketingAnalysis

@@ -6,12 +6,17 @@ and market dynamics restricted to the last 30 days.
 
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
 from config.settings import settings
 from schemas.research_models import ResearchItem, ICPResearchReport
+
+try:
+    from tavily import TavilyClient  # type: ignore
+except ImportError:
+    TavilyClient = None  # type: ignore
 
 logger = logging.getLogger("TavilyClient")
 
@@ -22,9 +27,8 @@ class TavilySearchClient:
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or settings.tavily_api_key
         self.client = None
-        if self.api_key:
+        if self.api_key and TavilyClient is not None:
             try:
-                from tavily import TavilyClient
                 self.client = TavilyClient(api_key=self.api_key)
             except Exception as e:
                 logger.warning(f"[Tavily] Initialization notice: {e}")
@@ -58,7 +62,7 @@ class TavilySearchClient:
                     ResearchItem(
                         title=r.get("title", "Market Discussion"),
                         url=r.get("url", "https://tavily.com"),
-                        publication_date=r.get("published_date") or datetime.utcnow().strftime("%Y-%m-%d"),
+                        publication_date=r.get("published_date") or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
                         source=r.get("url", "").split("/")[2] if "//" in r.get("url", "") else "web",
                         extracted_insight=r.get("content", "")[:350],
                         target_icp="Active Retail Swing & Day Trader",

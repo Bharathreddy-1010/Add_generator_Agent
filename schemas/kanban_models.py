@@ -1,6 +1,6 @@
 """Pydantic schemas for Hermes SQLite-backed Kanban boards, tasks, and event lifecycle."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
@@ -37,8 +37,8 @@ class KanbanTask(BaseModel):
     inputs_summary: Optional[str] = None
     decisions: List[str] = Field(default_factory=list)
     outputs_summary: Optional[str] = None
-    created_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
-    updated_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    updated_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
 class KanbanEvent(BaseModel):
@@ -49,7 +49,7 @@ class KanbanEvent(BaseModel):
     event_type: str = Field(..., description="START, STATUS, DECISION, OUTPUT, ERROR, COMPLETE")
     message: str
     payload: Dict[str, Any] = Field(default_factory=dict)
-    timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
 class KanbanBoardState(BaseModel):

@@ -43,18 +43,28 @@ class VideoAgent(BaseAgent):
             f"({winning_storyboard.total_duration_seconds}s total duration)..."
         )
 
-        # 1. Render OpenMontage Remotion Video Ad (Primary Preferred Engine)
+        # 1. Primary: Render OpenMontage Remotion Video Ad (Vox Style Master Sheet)
         openmontage_ad_path = self.settings.outputs_dir / "cwt_openmontage_ad.mp4"
-        self.log_status(task_id, "Rendering broadcast OpenMontage Remotion composition with dynamic charts & typography...")
-        self.openmontage_renderer.render(winning_storyboard, openmontage_ad_path)
-
-        # 2. Render Vertical 9:16 Video Ad
-        vertical_ad_path = self.settings.outputs_dir / "final_ad_vertical.mp4"
-        self.vertical_renderer.render_storyboard(winning_storyboard, "final_ad_vertical.mp4")
-
-        # Set final_ad.mp4 to the OpenMontage Remotion render
         final_ad_path = self.settings.outputs_dir / "final_ad.mp4"
-        shutil.copy(str(openmontage_ad_path), str(final_ad_path))
+        vertical_ad_path = self.settings.outputs_dir / "final_ad_vertical.mp4"
+
+        rendered_via_openmontage = False
+        if self.openmontage_renderer.is_available():
+            self.log_status(task_id, "Rendering Vox Style Master Sheet Remotion composition (1080x1920) with interactive male voiceover...")
+            try:
+                self.openmontage_renderer.render(winning_storyboard, openmontage_ad_path, composition_id="VoxExplainerVertical")
+                if openmontage_ad_path.exists() and openmontage_ad_path.stat().st_size > 1000:
+                    shutil.copy(str(openmontage_ad_path), str(final_ad_path))
+                    shutil.copy(str(openmontage_ad_path), str(vertical_ad_path))
+                    rendered_via_openmontage = True
+            except Exception as e:
+                self.log_status(task_id, f"OpenMontage render notice: {e}. Falling back to secondary renderer.")
+
+        # 2. Secondary fallback: OpenCV renderer if OpenMontage was not used or failed
+        if not rendered_via_openmontage:
+            self.log_status(task_id, "Rendering via secondary vertical renderer...")
+            self.vertical_renderer.render_storyboard(winning_storyboard, "final_ad_vertical.mp4")
+            shutil.copy(str(vertical_ad_path), str(final_ad_path))
 
         decision = (
             f"Completed video composition via OpenMontage Remotion: 1920x1080 full HD broadcast quality, "

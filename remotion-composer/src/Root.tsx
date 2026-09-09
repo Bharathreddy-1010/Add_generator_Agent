@@ -16,6 +16,7 @@ import { ProductReveal, ProductRevealProps } from "./components/ProductReveal";
 import { CaptionOverlay, WordCaption } from "./components/CaptionOverlay";
 import { CollageBurst, CollageBurstProps } from "./CollageBurst";
 import { LyricOverlay, LyricOverlayProps } from "./LyricOverlay";
+import { VoxExplainer, VoxExplainerProps } from "./VoxExplainer";
 
 // ---------------------------------------------------------------------------
 // Theme System — prevents every video from looking like dark fintech
@@ -132,9 +133,46 @@ const calculateMetadata: CalculateMetadataFunction<ExplainerProps> = async ({
   return { durationInFrames: Math.ceil((lastEnd + 1) * 30) };
 };
 
+const calculateVoxMetadata: CalculateMetadataFunction<VoxExplainerProps> = async ({
+  props,
+}) => {
+  const cuts = props.cuts || [];
+  if (cuts.length === 0) {
+    return { durationInFrames: 30 * 45 };
+  }
+  const lastEnd = Math.max(...cuts.map((c) => c.out_seconds || 0));
+  return { durationInFrames: Math.ceil((lastEnd + 0.5) * 30) };
+};
+
 export const Root: React.FC = () => {
   return (
     <>
+      <Composition
+        id="VoxExplainerVertical"
+        component={VoxExplainer}
+        durationInFrames={30 * 45}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{
+          cuts: [],
+          audio: {},
+        }}
+        calculateMetadata={calculateVoxMetadata}
+      />
+      <Composition
+        id="VoxExplainer"
+        component={VoxExplainer}
+        durationInFrames={30 * 45}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          cuts: [],
+          audio: {},
+        }}
+        calculateMetadata={calculateVoxMetadata}
+      />
       <Composition
         id="Explainer"
         component={Explainer}

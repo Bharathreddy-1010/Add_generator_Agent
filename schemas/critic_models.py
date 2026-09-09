@@ -1,6 +1,6 @@
 """Pydantic schemas for Creative Critic evaluation, scoring, and selection."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Optional
 from pydantic import BaseModel, Field
 
@@ -61,7 +61,7 @@ class ConceptEvaluation(BaseModel):
 
 class ConceptScoresReport(BaseModel):
     """Saved to data/analysis/concept_scores.json."""
-    evaluated_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    evaluated_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     evaluations: List[ConceptEvaluation]
     winner_ad_id: str
     winner_title: str

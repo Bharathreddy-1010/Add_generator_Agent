@@ -6,11 +6,14 @@ Supports real API calls with fallback to verified local fixtures in DEMO_MODE.
 
 import json
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
-from apify_client import ApifyClient
+try:
+    from apify_client import ApifyClient  # type: ignore
+except ImportError:
+    ApifyClient = None  # type: ignore
 from config.settings import settings
 from schemas.ad_models import MetaAdRecord, WinningAdsDataset
 
@@ -22,7 +25,7 @@ class ApifyMetaAdsClient:
 
     def __init__(self, token: Optional[str] = None):
         self.token = token or settings.apify_api_token
-        self.client = ApifyClient(self.token) if self.token else None
+        self.client = ApifyClient(self.token) if (self.token and ApifyClient is not None) else None
 
     def fetch_recent_ads(
         self,
@@ -57,7 +60,7 @@ class ApifyMetaAdsClient:
             dataset_items = list(self.client.dataset(run["defaultDatasetId"]).iterate_items())
             
             # Save raw output
-            raw_path = settings.raw_ads_dir / f"apify_raw_{datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.json"
+            raw_path = settings.raw_ads_dir / f"apify_raw_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}.json"
             with open(raw_path, "w", encoding="utf-8") as f:
                 json.dump(dataset_items, f, indent=2)
             logger.info(f"[Apify] Raw response saved to {raw_path}")
@@ -79,7 +82,7 @@ class ApifyMetaAdsClient:
 
     def _normalize_raw_items(self, items: List[Dict[str, Any]], days_back: int) -> List[MetaAdRecord]:
         """Normalize raw Apify items, remove duplicates, and filter by recency."""
-        cutoff_date = (datetime.utcnow() - timedelta(days=days_back)).date()
+        cutoff_date = (datetime.now(timezone.utc) - timedelta(days=days_back)).date()
         seen_texts = set()
         normalized = []
 
@@ -96,7 +99,7 @@ class ApifyMetaAdsClient:
 
             # Dates
             first_seen = item.get("firstSeen") or item.get("first_seen_date")
-            last_seen = item.get("lastSeen") or item.get("last_seen_date") or datetime.utcnow().strftime("%Y-%m-%d")
+            last_seen = item.get("lastSeen") or item.get("last_seen_date") or datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
             # Check 30-day cutoff if last_seen exists
             if last_seen:

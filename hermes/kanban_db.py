@@ -9,7 +9,7 @@ Nous Research Hermes Agent task architecture with tables:
 
 import json
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 
@@ -77,7 +77,7 @@ class HermesKanbanDB:
             cursor = conn.cursor()
             cursor.execute(
                 "INSERT OR IGNORE INTO boards (id, name, description, created_at) VALUES (?, ?, ?, ?)",
-                (board_id, name, "Hermes Marketing Video Ads Multi-Agent System", datetime.utcnow().isoformat())
+                (board_id, name, "Hermes Marketing Video Ads Multi-Agent System", datetime.now(timezone.utc).isoformat())
             )
             conn.commit()
 
@@ -142,7 +142,7 @@ class HermesKanbanDB:
                 status.value if hasattr(status, 'value') else str(status),
                 json.dumps(decisions),
                 outputs_summary,
-                datetime.utcnow().isoformat(),
+                datetime.now(timezone.utc).isoformat(),
                 task_id
             ))
             conn.commit()

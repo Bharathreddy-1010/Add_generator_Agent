@@ -1,14 +1,13 @@
-"""Production-Grade 9:16 Vertical Video Renderer.
+"""Production-Grade 9:16 Vertical Video Renderer (Vox Style Master Sheet).
 
-Generates high-impact, Vox-style social media performance video ads (1080x1920)
-from storyboard JSON specifications.
-
-Includes:
-- Dynamic animated UI & motion graphics (split screens, sentiment needles, charts)
-- Professional kinetic typography & readable social captions
-- Audio-synchronized voiceover narration per scene
-- Ambient music bed mixing with speech ducking
-- Scene transitions and final H.264/AAC MP4 encoding
+Generates high-impact, authentic documentary-collage performance video ads (1080x1920)
+strictly following the Vox Style Master Sheet:
+- Archival Tan background (#C9BB9C) with subtle print grid and matte texture
+- Heavy condensed typography in Ink Black (#1A1A1A) with Hot Red (#B62E1F) underline swipe
+- Cutout cards with crisp white borders and offset Hot Red drop shadows
+- Mustard (#D9A441) annotation labels ("Fig. X - [Label]")
+- Frame-accurate audio-video synchronization driven by interactive male neural voiceover
+- Ambient music bed mixing with speech ducking and final H.264/AAC MP4 encoding
 """
 
 import math
@@ -29,9 +28,18 @@ from tools.tts_engine import VoiceoverEngine
 
 logger = logging.getLogger("VideoRenderer")
 
+# Vox Style Master Sheet Palette
+RGB_ARCHIVAL_TAN = (201, 187, 156)   # #C9BB9C
+RGB_INK_BLACK = (26, 26, 26)         # #1A1A1A
+RGB_HALFTONE_GRAY = (140, 140, 140)  # #8C8C8C
+RGB_HOT_RED = (182, 46, 31)          # #B62E1F (strokes, underlines, arrows)
+RGB_MUSTARD = (217, 164, 65)         # #D9A441 (secondary accent for labels)
+RGB_PAPER_WHITE = (248, 245, 238)    # Clean archival paper
+RGB_WHITE = (255, 255, 255)
+
 
 class VideoAdRenderer:
-    """Renders storyboard JSON into a finished 1080x1920 MP4 advertisement."""
+    """Renders storyboard JSON into a finished 1080x1920 MP4 ad with the Vox Style Master Sheet."""
 
     def __init__(self):
         self.width = settings.video_width
@@ -49,8 +57,8 @@ class VideoAdRenderer:
         self.outputs_dir.mkdir(parents=True, exist_ok=True)
 
     def render_storyboard(self, storyboard: Storyboard, output_filename: str = "final_ad.mp4") -> Path:
-        """Render complete storyboard into 9:16 MP4 ad with audio and transitions."""
-        logger.info(f"[VideoRenderer] Rendering ad '{storyboard.title}' ({len(storyboard.scenes)} scenes)...")
+        """Render complete storyboard into 9:16 MP4 ad with synchronized voiceover and music."""
+        logger.info(f"[VideoRenderer] Rendering Vox ad '{storyboard.title}' ({len(storyboard.scenes)} scenes)...")
         scene_video_files = []
 
         for idx, scene in enumerate(storyboard.scenes):
@@ -61,18 +69,22 @@ class VideoAdRenderer:
         final_mp4_path = self.outputs_dir / output_filename
         self._compose_final_video(scene_video_files, final_mp4_path)
 
-        logger.info(f"[VideoRenderer] SUCCESS: Final ad rendered to {final_mp4_path}")
+        logger.info(f"[VideoRenderer] SUCCESS: Final Vox ad rendered to {final_mp4_path}")
         return final_mp4_path
 
     def _render_single_scene(self, scene_num: int, scene: Scene, storyboard: Storyboard) -> Path:
-        """Render frames for a single scene, synthesize VO, and output scene MP4."""
-        duration = scene.duration
+        """Synthesize interactive male voiceover, measure exact duration, and render matching video frames."""
+        # Synthesize voiceover first to establish ground-truth duration
+        vo_wav, measured_duration = self.tts.synthesize_and_measure(
+            scene_idx=scene_num,
+            narration_text=scene.voiceover,
+            target_duration=float(scene.duration)
+        )
+        duration = max(2.5, measured_duration)
         total_frames = max(15, int(duration * self.fps))
+
         temp_avi = self.renders_dir / f"scene_{scene_num:02d}_raw.avi"
         scene_mp4 = self.renders_dir / f"scene_{scene_num:02d}.mp4"
-
-        # Generate voiceover audio
-        vo_wav = self.tts.synthesize_scene_voiceover(scene_num, scene.voiceover, duration)
 
         # Video writer for raw frames
         fourcc = cv2.VideoWriter_fourcc(*"MJPG")
@@ -112,15 +124,16 @@ class VideoAdRenderer:
         progress: float,
         storyboard: Storyboard
     ) -> Image.Image:
-        """Generate high-contrast Vox-style 1080x1920 graphic frame."""
-        frame = Image.new("RGB", (self.width, self.height), (12, 16, 26))
+        """Generate high-contrast Vox Style Master Sheet 1080x1920 graphic frame."""
+        # Archival Tan Background
+        frame = Image.new("RGB", (self.width, self.height), RGB_ARCHIVAL_TAN)
         draw = ImageDraw.Draw(frame)
 
-        # Draw subtle grid background
-        self._draw_cyber_grid(draw)
+        # Draw subtle archival grid and halftone texture
+        self._draw_archival_grid(draw, progress)
 
-        # Top branding header
-        self._draw_header(draw, storyboard)
+        # Top archival branding header
+        self._draw_vox_header(draw, scene_num)
 
         # Main Scene Visual depending on scene number
         if scene_num == 1:
@@ -136,175 +149,222 @@ class VideoAdRenderer:
         else:
             self._draw_cta_scene(draw, scene, progress, storyboard)
 
-        # Lower Caption / Subtitle Bar
+        # Lower Caption / Subtitle Bar with Vox newsroom badge
         self._draw_caption_overlay(draw, scene, progress)
 
-        # Scene progress bar at bottom
-        draw.rectangle([(0, self.height - 12), (int(self.width * progress), self.height)], fill=(0, 240, 255))
+        # Scene progress indicator in Hot Red
+        draw.rectangle([(0, self.height - 10), (int(self.width * progress), self.height)], fill=RGB_HOT_RED)
 
         return frame
 
-    def _draw_cyber_grid(self, draw: ImageDraw.ImageDraw) -> None:
-        """Draw dark modern grid lines."""
-        step = 90
+    def _draw_archival_grid(self, draw: ImageDraw.ImageDraw, p: float) -> None:
+        """Draw subtle archival grid with halftone markings and slow drift."""
+        step = 120
+        drift = int(p * 12)
+        # Coordinate grid lines
         for x in range(0, self.width, step):
-            draw.line([(x, 0), (x, self.height)], fill=(20, 28, 44), width=1)
+            draw.line([(x, 0), (x, self.height)], fill=(185, 172, 142), width=1)
         for y in range(0, self.height, step):
-            draw.line([(0, y), (self.width, y)], fill=(20, 28, 44), width=1)
+            draw.line([(0, y + drift), (self.width, y + drift)], fill=(185, 172, 142), width=1)
 
-    def _draw_header(self, draw: ImageDraw.ImageDraw, storyboard: Storyboard) -> None:
-        """Draw persistent top banner."""
-        draw.rectangle([(40, 40), (self.width - 40, 130)], fill=(18, 24, 40), outline=(0, 220, 255), width=2)
-        draw.text((70, 60), "CROWDWISDOM TRADING", fill=(0, 255, 200))
-        draw.text((70, 92), "COLLECTIVE MARKET INTELLIGENCE  •  16,000+ SOURCES", fill=(140, 160, 190))
-        # Live badge
-        draw.rectangle([(self.width - 190, 60), (self.width - 70, 110)], fill=(220, 30, 60))
-        draw.text((self.width - 170, 75), "LIVE ALPHA", fill=(255, 255, 255))
+        # Double archival frame line
+        draw.rectangle([(30, 30), (self.width - 30, self.height - 30)], outline=RGB_INK_BLACK, width=2)
+        draw.rectangle([(36, 36), (self.width - 36, self.height - 36)], outline=(170, 155, 125), width=1)
+
+    def _draw_vox_header(self, draw: ImageDraw.ImageDraw, scene_num: int) -> None:
+        """Draw persistent newsroom header with Mustard Fig badge."""
+        hy = 60
+        # Branding Bar
+        draw.text((70, hy), "CROWDWISDOM TRADING", fill=RGB_INK_BLACK)
+        draw.text((70, hy + 28), "DOCUMENTARY EXPLAINER SERIES  •  COLLECTIVE INTELLIGENCE", fill=(70, 70, 70))
+
+        # Mustard Figure Badge on top right
+        badge_x1, badge_y1 = self.width - 360, hy - 4
+        badge_x2, badge_y2 = self.width - 70, hy + 44
+        # Drop shadow for badge
+        draw.rectangle([(badge_x1 + 4, badge_y1 + 4), (badge_x2 + 4, badge_y2 + 4)], fill=RGB_INK_BLACK)
+        draw.rectangle([(badge_x1, badge_y1), (badge_x2, badge_y2)], fill=RGB_MUSTARD, outline=RGB_INK_BLACK, width=2)
+        draw.text((badge_x1 + 18, badge_y1 + 12), f"Fig. {scene_num} — Case Report", fill=RGB_INK_BLACK)
+
+        # Hot Red underline beneath header
+        draw.line([(70, hy + 64), (self.width - 70, hy + 64)], fill=RGB_HOT_RED, width=4)
+
+    def _draw_vox_box(
+        self,
+        draw: ImageDraw.ImageDraw,
+        box: Tuple[int, int, int, int],
+        fill: Tuple[int, int, int] = RGB_PAPER_WHITE,
+        offset_color: Tuple[int, int, int] = RGB_HOT_RED,
+        offset_dist: int = 8
+    ) -> None:
+        """Helper to draw a card with white sticker border and offset Hot Red shadow."""
+        x1, y1, x2, y2 = box
+        # Offset Hot Red drop shadow
+        draw.rectangle([(x1 + offset_dist, y1 + offset_dist), (x2 + offset_dist, y2 + offset_dist)], fill=offset_color)
+        # White sticker outer frame
+        draw.rectangle([(x1 - 4, y1 - 4), (x2 + 4, y2 + 4)], fill=RGB_WHITE)
+        # Inner content box with ink black keyline
+        draw.rectangle([(x1, y1), (x2, y2)], fill=fill, outline=RGB_INK_BLACK, width=3)
 
     def _draw_hook_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
-        """Scene 1: High-impact split screen (YOU: BUY vs CROWD: 78% SELL)."""
-        # Hook Title
-        draw.text((60, 190), "THE RETAIL TRAP", fill=(255, 215, 0))
+        """Scene 1: Stat Driven Narrative (YOU: BUY vs CROWD: 84% DUMPING)."""
+        # H1 Headline
+        draw.text((70, 180), "THE RETAIL TRAP", fill=RGB_INK_BLACK)
+        underline_w = int((self.width - 140) * min(1.0, p * 1.8))
+        draw.line([(70, 245), (70 + underline_w, 245)], fill=RGB_HOT_RED, width=6)
+        draw.text((70, 265), "When social hype screams 'buy', institutional liquidity exits.", fill=RGB_INK_BLACK)
+
+        # Card 1: Retail Trader Execution
+        box_y1 = 340
+        self._draw_vox_box(draw, (70, box_y1, self.width - 70, box_y1 + 380), offset_color=RGB_INK_BLACK)
+        draw.rectangle([(70, box_y1), (self.width - 70, box_y1 + 65)], fill=RGB_HOT_RED)
+        draw.text((95, box_y1 + 18), "YOU: CHASING THE BREAKOUT (FOMO)", fill=RGB_WHITE)
         
-        # Split 1: Retail Action
-        box_y1 = 280
-        draw.rectangle([(60, box_y1), (self.width - 60, box_y1 + 420)], fill=(25, 20, 35), outline=(255, 60, 80), width=4)
-        draw.rectangle([(60, box_y1), (self.width - 60, box_y1 + 70)], fill=(255, 60, 80))
-        draw.text((90, box_y1 + 18), "YOU: CHASING THE BREAKOUT", fill=(255, 255, 255))
-        
-        # Retail emotion indicators
-        pulse = 1.0 + 0.08 * math.sin(p * math.pi * 6)
-        draw.text((90, box_y1 + 120), "STATUS: BUY CALLS ($SPY)", fill=(255, 100, 120))
-        draw.text((90, box_y1 + 180), "SENTIMENT: 88% RETAIL FOMO", fill=(255, 200, 200))
-        draw.text((90, box_y1 + 240), "ALERT: BUYING INTO PEAK NOISE", fill=(255, 230, 80))
+        draw.text((100, box_y1 + 100), "SIGNAL: BUY CALLS ($SPY)", fill=RGB_INK_BLACK)
+        draw.text((100, box_y1 + 160), "STATUS: EXTREME RETAIL CONVICTION", fill=RGB_HOT_RED)
+        draw.text((100, box_y1 + 220), "SENTIMENT: 88% RETAIL BULLISH NOISE", fill=RGB_INK_BLACK)
+        draw.text((100, box_y1 + 280), "OUTCOME: BUYING INTO INSTITUTIONAL TOP", fill=RGB_HOT_RED)
 
-        # VS divider
-        draw.ellipse([(self.width // 2 - 50, 730), (self.width // 2 + 50, 830)], fill=(0, 240, 255))
-        draw.text((self.width // 2 - 20, 765), "VS", fill=(0, 0, 0))
+        # Red Arrow pointing down
+        arrow_y = 760
+        draw.line([(self.width // 2, arrow_y), (self.width // 2, arrow_y + 70)], fill=RGB_HOT_RED, width=8)
+        draw.polygon([
+            (self.width // 2 - 20, arrow_y + 70),
+            (self.width // 2 + 20, arrow_y + 70),
+            (self.width // 2, arrow_y + 100)
+        ], fill=RGB_HOT_RED)
 
-        # Split 2: Collective Consensus
-        box_y2 = 870
-        draw.rectangle([(60, box_y2), (self.width - 60, box_y2 + 450)], fill=(15, 35, 30), outline=(0, 255, 170), width=4)
-        draw.rectangle([(60, box_y2), (self.width - 60, box_y2 + 70)], fill=(0, 200, 140))
-        draw.text((90, box_y2 + 18), "CROWDWISDOM AI CONSENSUS", fill=(0, 0, 0))
+        # Card 2: Stat Hero Card (84% Retail Trap)
+        box_y2 = 890
+        self._draw_vox_box(draw, (70, box_y2, self.width - 70, box_y2 + 420), offset_color=RGB_HOT_RED)
+        draw.rectangle([(70, box_y2), (self.width - 70, box_y2 + 65)], fill=RGB_INK_BLACK)
+        draw.text((95, box_y2 + 18), "CROWDWISDOM COLLECTIVE CONSENSUS", fill=RGB_MUSTARD)
 
-        # Consensus gauge
-        gauge_width = int((self.width - 200) * min(1.0, p * 1.4))
-        draw.text((90, box_y2 + 120), "REAL CONVICTION: 78% DIVERGENCE", fill=(0, 255, 180))
-        draw.rectangle([(90, box_y2 + 180), (self.width - 90, box_y2 + 230)], fill=(20, 30, 40))
-        draw.rectangle([(90, box_y2 + 180), (90 + gauge_width, box_y2 + 230)], fill=(0, 255, 170))
-        draw.text((90, box_y2 + 260), "SMART MONEY TURNING SHORT 48H EARLIER", fill=(240, 250, 255))
-        draw.text((90, box_y2 + 320), "RESULT: PROTECT CAPITAL BEFORE REVERSAL", fill=(255, 215, 0))
+        # Counter animation (0 to 84)
+        stat_val = int(84 * min(1.0, p * 1.5))
+        draw.text((100, box_y2 + 100), f"{stat_val}% DIVERGENCE", fill=RGB_HOT_RED)
+        draw.text((100, box_y2 + 210), "Institutions quietly dumped 48 hours prior.", fill=RGB_INK_BLACK)
+        draw.text((100, box_y2 + 270), "CrowdWisdom filters noise to capture true reversals.", fill=(70, 70, 70))
+        draw.text((100, box_y2 + 330), "RESULT: CAPITAL PROTECTED BEFORE CRASH", fill=RGB_HOT_RED)
 
     def _draw_indicator_clutter_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
-        """Scene 2: Overload & Analysis Paralysis."""
-        draw.text((60, 180), "INDICATOR OVERLOAD", fill=(255, 60, 60))
-        draw.text((60, 240), "WHY 70% OF TRADERS BLOW UP", fill=(200, 215, 240))
+        """Scene 2: Indicator Overload & $4,250 Drawdown."""
+        draw.text((70, 180), "14 INDICATORS CANNOT SAVE YOU", fill=RGB_INK_BLACK)
+        underline_w = int((self.width - 140) * min(1.0, p * 1.8))
+        draw.line([(70, 245), (70 + underline_w, 245)], fill=RGB_HOT_RED, width=6)
+        draw.text((70, 265), "Conflicting technicals guarantee analysis paralysis.", fill=RGB_INK_BLACK)
 
-        # Draw messy chaotic overlapping indicators
-        for i in range(5):
-            y_base = 360 + i * 140
-            draw.rectangle([(60, y_base), (self.width - 60, y_base + 110)], fill=(22, 28, 42), outline=(50, 65, 90))
-            draw.text((90, y_base + 20), f"INDICATOR {i+1}: {'RSI OVERBOUGHT' if i%2==0 else 'MACD BULLISH CROSS'}", fill=(255, 180, 80) if i%2==0 else (80, 220, 255))
-            draw.text((90, y_base + 60), f"SIGNAL: {'SELL' if i%2==0 else 'BUY'} ⚠️ CONFLICTING", fill=(255, 80, 80) if i%2==0 else (0, 255, 150))
-
-        # Giant Red Stamp appearing
-        if p > 0.4:
-            draw.rectangle([(80, 1100), (self.width - 80, 1260)], fill=(200, 20, 40), outline=(255, 255, 255), width=4)
-            draw.text((120, 1150), "ANALYSIS PARALYSIS = LOSSES", fill=(255, 255, 255))
-
-    def _draw_divergence_chart_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
-        """Scene 3: The 78% Reversal Signal & Institutional Divergence."""
-        draw.text((60, 180), "SPY / MARKET INTELLIGENCE", fill=(0, 255, 200))
-        draw.text((60, 240), "SPOTTING THE INSTITUTIONAL TRAP", fill=(255, 215, 0))
-
-        # Chart container
-        draw.rectangle([(60, 320), (self.width - 60, 1180)], fill=(16, 22, 36), outline=(0, 200, 255), width=2)
-        
-        # Draw dynamic price curve vs consensus curve
-        points_retail = []
-        points_consensus = []
-        n_pts = 30
-        for i in range(int(n_pts * min(1.0, p * 1.2))):
-            x = int(100 + i * ((self.width - 200) / n_pts))
-            # Retail curve keeps rising (FOMO)
-            y1 = int(700 - i * 10 + math.sin(i * 0.5) * 25)
-            # Consensus curve dives (Divergence)
-            y2 = int(600 + i * 14 + math.cos(i * 0.4) * 20)
-            points_retail.append((x, y1))
-            points_consensus.append((x, y2))
-
-        if len(points_retail) > 1:
-            draw.line(points_retail, fill=(255, 60, 80), width=6)
-            draw.text((points_retail[-1][0] - 180, points_retail[-1][1] - 40), "RETAIL BUYING", fill=(255, 60, 80))
-
-        if len(points_consensus) > 1:
-            draw.line(points_consensus, fill=(0, 255, 170), width=6)
-            draw.text((points_consensus[-1][0] - 220, points_consensus[-1][1] + 30), "CWT CONSENSUS EXIT", fill=(0, 255, 170))
-
-        # Callout card at bottom of chart
-        draw.rectangle([(90, 1020), (self.width - 90, 1140)], fill=(24, 34, 54))
-        draw.text((120, 1045), "DIVERGENCE CONFIRMED: 48H BEFORE SELLOFF", fill=(255, 215, 0))
-        draw.text((120, 1085), "CAPITAL SAVED: +3.8% AVOIDED DRAWDOWN", fill=(0, 255, 170))
-
-    def _draw_consensus_radar_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
-        """Scene 4: 16,420+ Trader Predictions Distilled."""
-        draw.text((60, 180), "16,420+ SOURCES MONITORED", fill=(0, 240, 255))
-        draw.text((60, 240), "COLLECTIVE TRADER INTELLIGENCE", fill=(255, 255, 255))
-
-        # Draw central radar ring
-        cx, cy = self.width // 2, 700
-        radius = 280
-        draw.ellipse([(cx - radius, cy - radius), (cx + radius, cy + radius)], outline=(40, 60, 90), width=3)
-        draw.ellipse([(cx - radius // 2, cy - radius // 2), (cx + radius // 2, cy + radius // 2)], outline=(0, 200, 255), width=2)
-
-        # Radar sweep line
-        angle = p * 4 * math.pi
-        rx = int(cx + radius * math.cos(angle))
-        ry = int(cy + radius * math.sin(angle))
-        draw.line([(cx, cy), (rx, ry)], fill=(0, 255, 200), width=4)
-
-        # Orbiting source badges
-        sources = ["YouTube Fin", "Reddit", "X FinTwit", "Discord Alpha", "Institutional Filings"]
-        for idx, src in enumerate(sources):
-            src_a = (idx / len(sources)) * 2 * math.pi + p
-            sx = int(cx + (radius - 50) * math.cos(src_a))
-            sy = int(cy + (radius - 50) * math.sin(src_a))
-            draw.rectangle([(sx - 70, sy - 25), (sx + 70, sy + 25)], fill=(20, 30, 48), outline=(0, 240, 255))
-            draw.text((sx - 50, sy - 10), src, fill=(255, 255, 255))
-
-        # Center pulse
-        draw.ellipse([(cx - 70, cy - 70), (cx + 70, cy + 70)], fill=(0, 240, 255))
-        draw.text((cx - 45, cy - 15), "CONSENSUS", fill=(0, 0, 0))
-
-        # Bottom stat
-        draw.rectangle([(80, 1080), (self.width - 80, 1220)], fill=(24, 32, 50), outline=(0, 255, 170), width=2)
-        draw.text((110, 1115), "89.4% NOISE ELIMINATION", fill=(0, 255, 170))
-        draw.text((110, 1160), "Only high-conviction qualified setups make the cut", fill=(200, 215, 235))
-
-    def _draw_execution_cockpit_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
-        """Scene 5: Clean Execution Cockpit (Entry, Target, Stop)."""
-        draw.text((60, 180), "EXECUTION-READY PLANS", fill=(0, 255, 170))
-        draw.text((60, 240), "ZERO HESITATION  •  DEFINED RISK", fill=(255, 215, 0))
-
-        # 3 Structured execution cards
-        cards = [
-            ("ENTRY TRIGGER", "$482.50", "Confirmed Breakout Zone", (0, 200, 255)),
-            ("TARGET 1 & 2", "$488.20 / $494.00", "Crowd Exit Consensus", (0, 255, 140)),
-            ("INVALIDATION STOP", "$479.80", "Strict Risk Limit (1:3 R/R)", (255, 80, 100)),
+        # Messy indicator cards with offset drops
+        indicators = [
+            ("RSI (14)", "82.4 OVERBOUGHT", "SELL SIGNAL", RGB_HOT_RED),
+            ("MACD (12,26,9)", "GOLDEN CROSS", "BUY SIGNAL", (20, 130, 70)),
+            ("BOLLINGER BANDS", "UPPER BAND SQUEEZE", "CONFLICTING", RGB_MUSTARD),
+            ("STOCHASTICS", "BEARISH DIVERGENCE", "EXIT CALLS", RGB_HOT_RED),
         ]
 
-        for i, (label, val, desc, col) in enumerate(cards):
-            cy = 340 + i * 230
-            draw.rectangle([(60, cy), (self.width - 60, cy + 190)], fill=(18, 25, 40), outline=col, width=3)
-            draw.text((90, cy + 25), label, fill=col)
-            draw.text((90, cy + 70), val, fill=(255, 255, 255))
-            draw.text((90, cy + 130), desc, fill=(160, 180, 210))
+        for i, (name, val, sig, col) in enumerate(indicators):
+            cy = 340 + i * 150
+            self._draw_vox_box(draw, (70, cy, self.width - 70, cy + 120), offset_color=RGB_INK_BLACK, offset_dist=6)
+            draw.text((95, cy + 20), name, fill=RGB_INK_BLACK)
+            draw.text((95, cy + 65), f"STATE: {val}", fill=col)
+            # Stamp tag on right
+            draw.rectangle([(self.width - 320, cy + 30), (self.width - 95, cy + 90)], fill=RGB_INK_BLACK)
+            draw.text((self.width - 300, cy + 45), sig, fill=RGB_WHITE)
 
-        # Trust banner
-        draw.rectangle([(60, 1080), (self.width - 60, 1220)], fill=(22, 32, 50))
-        draw.text((90, 1115), "TRANSPARENT VERIFIED TRACK RECORD", fill=(255, 215, 0))
-        draw.text((90, 1160), "25+ Years Trading Experience • Gilad Bar-Ilan", fill=(200, 220, 245))
+        # Giant Red Stamp appearing across screen
+        if p > 0.4:
+            stamp_y = 980
+            draw.rectangle([(90, stamp_y), (self.width - 90, stamp_y + 160)], fill=RGB_PAPER_WHITE, outline=RGB_HOT_RED, width=6)
+            draw.text((120, stamp_y + 35), "ANALYSIS PARALYSIS", fill=RGB_HOT_RED)
+            draw.text((120, stamp_y + 100), "AVERAGE DRAWDOWN: -$4,250", fill=RGB_INK_BLACK)
+
+    def _draw_divergence_chart_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
+        """Scene 3: SPY Reversal Signal & Institutional Divergence."""
+        draw.text((70, 180), "THE SPY REVERSAL SIGNAL", fill=RGB_INK_BLACK)
+        underline_w = int((self.width - 140) * min(1.0, p * 1.8))
+        draw.line([(70, 245), (70 + underline_w, 245)], fill=RGB_HOT_RED, width=6)
+        draw.text((70, 265), "Case Study: Spotting the institutional trap 48 hours early.", fill=RGB_INK_BLACK)
+
+        # Chart Box
+        self._draw_vox_box(draw, (70, 330, self.width - 70, 1050), offset_color=RGB_HOT_RED)
+        draw.rectangle([(70, 330), (self.width - 70, 395)], fill=RGB_INK_BLACK)
+        draw.text((95, 348), "SPY LIQUIDITY DIVERGENCE (CASE REPORT)", fill=RGB_MUSTARD)
+
+        # Draw chart lines
+        pts_fomo = []
+        pts_cwt = []
+        n_pts = 30
+        for i in range(int(n_pts * min(1.0, p * 1.2))):
+            x = int(110 + i * ((self.width - 220) / n_pts))
+            y1 = int(720 - i * 11 + math.sin(i * 0.5) * 20)
+            y2 = int(620 + i * 13 + math.cos(i * 0.4) * 16)
+            pts_fomo.append((x, y1))
+            pts_cwt.append((x, y2))
+
+        if len(pts_fomo) > 1:
+            draw.line(pts_fomo, fill=RGB_HOT_RED, width=6)
+            draw.text((pts_fomo[-1][0] - 170, pts_fomo[-1][1] - 40), "RETAIL FOMO", fill=RGB_HOT_RED)
+
+        if len(pts_cwt) > 1:
+            draw.line(pts_cwt, fill=RGB_INK_BLACK, width=6)
+            draw.text((pts_cwt[-1][0] - 210, pts_cwt[-1][1] + 30), "CWT EXIT SIGNAL", fill=RGB_INK_BLACK)
+
+        # Stat Callout in chart
+        draw.rectangle([(100, 920), (self.width - 100, 1020)], fill=RGB_ARCHIVAL_TAN, outline=RGB_INK_BLACK, width=2)
+        draw.text((125, 940), "76% REVERSAL CAPTURE ACCURACY", fill=RGB_HOT_RED)
+        draw.text((125, 975), "Saved retail accounts from -3.8% intraday collapse.", fill=RGB_INK_BLACK)
+
+    def _draw_consensus_radar_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
+        """Scene 4: 16,420+ Sources Monitored."""
+        draw.text((70, 180), "16,420+ SOURCES MONITORED", fill=RGB_INK_BLACK)
+        underline_w = int((self.width - 140) * min(1.0, p * 1.8))
+        draw.line([(70, 245), (70 + underline_w, 245)], fill=RGB_HOT_RED, width=6)
+        draw.text((70, 265), "Collective trader intelligence stripped of social noise.", fill=RGB_INK_BLACK)
+
+        sources = [
+            ("FinTwit Alpha Feeds", "8,240 Verified Accounts", "Bull Trap Detected"),
+            ("Reddit Communities", "4,680 Sentiment Signals", "Extreme FOMO Trap"),
+            ("Institutional Wires", "3,500 Regulatory Feeds", "Smart Money Exit"),
+        ]
+
+        for idx, (name, count, alert) in enumerate(sources):
+            cy = 340 + idx * 220
+            self._draw_vox_box(draw, (70, cy, self.width - 70, cy + 180), offset_color=RGB_HOT_RED)
+            draw.text((95, cy + 25), name, fill=RGB_INK_BLACK)
+            draw.text((95, cy + 75), count, fill=(80, 80, 80))
+            # Alert Pill
+            draw.rectangle([(95, cy + 120), (self.width - 95, cy + 160)], fill=RGB_MUSTARD)
+            draw.text((115, cy + 128), f"ALERT: {alert}", fill=RGB_INK_BLACK)
+
+        # Bottom stat
+        draw.rectangle([(70, 1050), (self.width - 70, 1180)], fill=RGB_INK_BLACK)
+        draw.text((100, 1080), "89.4% SOCIAL NOISE FILTERED", fill=RGB_HOT_RED)
+        draw.text((100, 1130), "Only high-conviction consensus trade setups make the cut.", fill=RGB_WHITE)
+
+    def _draw_execution_cockpit_scene(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
+        """Scene 5: Solo Guesswork vs CrowdWisdom Plan."""
+        draw.text((70, 180), "SOLO GUESSWORK vs CROWDWISDOM", fill=RGB_INK_BLACK)
+        underline_w = int((self.width - 140) * min(1.0, p * 1.8))
+        draw.line([(70, 245), (70 + underline_w, 245)], fill=RGB_HOT_RED, width=6)
+        draw.text((70, 265), "Pre-calculated levels replace emotional panic trading.", fill=RGB_INK_BLACK)
+
+        levels = [
+            ("ENTRY TRIGGER", "$482.50", "Breakout Divergence Zone", RGB_INK_BLACK),
+            ("PROFIT TARGET", "$488.20", "Crowd Liquidity Exit", RGB_MUSTARD),
+            ("INVALIDATION STOP", "$479.80", "Strict Risk Limit (1:3 R/R)", RGB_HOT_RED),
+        ]
+
+        for i, (lbl, val, desc, col) in enumerate(levels):
+            cy = 340 + i * 230
+            self._draw_vox_box(draw, (70, cy, self.width - 70, cy + 190), offset_color=RGB_HOT_RED)
+            draw.text((95, cy + 25), lbl, fill=col)
+            draw.text((95, cy + 75), val, fill=RGB_INK_BLACK)
+            draw.text((95, cy + 135), desc, fill=(80, 80, 80))
+
+        # Trust Footer
+        draw.rectangle([(70, 1080), (self.width - 70, 1200)], fill=RGB_INK_BLACK)
+        draw.text((95, 1110), "25+ YEARS VERIFIED TRADING EXPERIENCE", fill=RGB_MUSTARD)
+        draw.text((95, 1150), "Founded by Gilad Bar-Ilan • Disciplined Methodology", fill=RGB_WHITE)
 
     def _draw_cta_scene(
         self,
@@ -313,46 +373,49 @@ class VideoAdRenderer:
         p: float,
         storyboard: Storyboard
     ) -> None:
-        """Scene 6: High-Converting Finale CTA."""
-        draw.text((60, 200), "STOP TRADING ALONE.", fill=(255, 255, 255))
-        draw.text((60, 270), "TAP THE COLLECTIVE EDGE.", fill=(0, 240, 255))
+        """Scene 6: Newsroom Finale CTA."""
+        draw.text((70, 180), "STOP TRADING ALONE", fill=RGB_INK_BLACK)
+        underline_w = int((self.width - 140) * min(1.0, p * 1.8))
+        draw.line([(70, 245), (70 + underline_w, 245)], fill=RGB_HOT_RED, width=6)
+        draw.text((70, 265), "Tap the collective edge with CrowdWisdomTrading.", fill=RGB_INK_BLACK)
 
-        # Main Offer Box
-        draw.rectangle([(60, 380), (self.width - 60, 880)], fill=(20, 30, 50), outline=(255, 215, 0), width=4)
-        draw.text((90, 420), "FREE WEEKLY MARKET OUTLOOK", fill=(255, 215, 0))
-        draw.text((90, 480), "• Top 5 Crowd Consensus Trade Ideas", fill=(240, 245, 255))
-        draw.text((90, 540), "• Institutional Sentiment Radar", fill=(240, 245, 255))
-        draw.text((90, 600), "• 20 Free Platform Prediction Credits", fill=(240, 245, 255))
-        draw.text((90, 660), "• Real-Time Market Volatility Briefings", fill=(240, 245, 255))
-        draw.text((90, 740), "NO CREDIT CARD REQUIRED TO START", fill=(0, 255, 170))
+        # Offer Box
+        self._draw_vox_box(draw, (70, 340, self.width - 70, 920), offset_color=RGB_HOT_RED)
+        draw.rectangle([(70, 340), (self.width - 70, 410)], fill=RGB_INK_BLACK)
+        draw.text((95, 360), "FREE WEEKLY MARKET OUTLOOK", fill=RGB_MUSTARD)
 
-        # Giant Action Button
-        pulse_btn = int(8 * math.sin(p * math.pi * 6))
-        bx1, by1 = 60 - pulse_btn, 940 - pulse_btn
-        bx2, by2 = self.width - 60 + pulse_btn, 1080 + pulse_btn
-        draw.rectangle([(bx1, by1), (bx2, by2)], fill=(0, 240, 255), outline=(255, 255, 255), width=3)
-        draw.text((bx1 + 80, by1 + 40), "START TRADING WITH CROWDWISDOM", fill=(0, 10, 30))
+        draw.text((95, 460), "• Top 5 Crowd Consensus Trade Setups", fill=RGB_INK_BLACK)
+        draw.text((95, 530), "• Institutional Sentiment Divergence Alerts", fill=RGB_INK_BLACK)
+        draw.text((95, 600), "• 20 Free Platform Prediction Credits", fill=RGB_INK_BLACK)
+        draw.text((95, 670), "• Weekly Volatility & Reversal Briefings", fill=RGB_INK_BLACK)
+        draw.text((95, 760), "NO CREDIT CARD REQUIRED TO START", fill=RGB_HOT_RED)
 
-        # Website
-        draw.text((self.width // 2 - 240, 1140), "crowdwisdomtrading.com", fill=(255, 215, 0))
-        draw.text((self.width // 2 - 200, 1200), "Educational & Intelligence Platform", fill=(140, 155, 180))
+        # Big Action Button
+        pulse = int(6 * math.sin(p * math.pi * 4))
+        bx1, by1 = 70 - pulse, 970 - pulse
+        bx2, by2 = self.width - 70 + pulse, 1100 + pulse
+        
+        # Shadow for button
+        draw.rectangle([(bx1 + 6, by1 + 6), (bx2 + 6, by2 + 6)], fill=RGB_INK_BLACK)
+        draw.rectangle([(bx1, by1), (bx2, by2)], fill=RGB_HOT_RED, outline=RGB_INK_BLACK, width=4)
+        draw.text((bx1 + 55, by1 + 38), "START AT CROWDWISDOMTRADING.COM", fill=RGB_WHITE)
+
+        # Subtitle domain
+        draw.text((self.width // 2 - 220, 1140), "crowdwisdomtrading.com", fill=RGB_INK_BLACK)
+        draw.text((self.width // 2 - 180, 1190), "Educational & Intelligence Platform", fill=(80, 80, 80))
 
     def _draw_caption_overlay(self, draw: ImageDraw.ImageDraw, scene: Scene, p: float) -> None:
-        """Draw bold kinetic captions and on-screen text in lower third."""
-        caption_y = self.height - 320
-        # Background pill
-        draw.rectangle(
-            [(40, caption_y), (self.width - 40, caption_y + 180)],
-            fill=(10, 14, 22),
-            outline=(40, 55, 80),
-            width=2
-        )
-        # On-screen text
+        """Draw bold kinetic caption card in lower third."""
+        caption_y = self.height - 290
+        # Background card with white sticker border & offset shadow
+        self._draw_vox_box(draw, (50, caption_y, self.width - 50, caption_y + 160), fill=RGB_PAPER_WHITE, offset_color=RGB_INK_BLACK, offset_dist=5)
+        
+        # Speaker Tag
+        draw.text((80, caption_y + 20), "VOX DOCUMENTARY NARRATOR:", fill=RGB_HOT_RED)
         text_line = scene.on_screen_text or scene.voiceover[:45]
-        draw.text((70, caption_y + 25), "SPEAKER:", fill=(0, 200, 255))
-        draw.text((70, caption_y + 65), f'"{text_line[:55]}"', fill=(255, 255, 255))
-        if len(text_line) > 55:
-            draw.text((70, caption_y + 110), f'"{text_line[55:110]}"', fill=(255, 215, 0))
+        draw.text((80, caption_y + 60), f'"{text_line[:50]}"', fill=RGB_INK_BLACK)
+        if len(text_line) > 50:
+            draw.text((80, caption_y + 105), f'"{text_line[50:100]}"', fill=(70, 70, 70))
 
     def _compose_final_video(self, scene_files: List[Path], output_mp4: Path) -> None:
         """Concatenate rendered scene MP4 files and mix ambient soundscape."""
@@ -361,7 +424,6 @@ class VideoAdRenderer:
             for sf in scene_files:
                 f.write(f"file '{sf.resolve()}'\n")
 
-        # Step 1: Concatenate clips
         temp_concat = self.renders_dir / "concat_raw.mp4"
         cmd_concat = [
             "ffmpeg", "-y",
@@ -373,12 +435,11 @@ class VideoAdRenderer:
         ]
         subprocess.run(cmd_concat, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
 
-        # Step 2: Generate subtle background music bed
         ambient_wav = self.assets_dir / "ambient_bed.wav"
-        total_duration = sum(Scene(scene_number=1, start_time=0, end_time=1, duration=3, visual="v", camera="c", voiceover="vo", on_screen_text="t").duration for _ in scene_files) * 5
-        self._generate_ambient_audio_bed(ambient_wav, duration=60.0)
+        if not ambient_wav.exists():
+            self._generate_ambient_audio_bed(ambient_wav, duration=60.0)
 
-        # Step 3: Final mix with ducking (background audio volume 0.12, voiceover volume 1.0)
+        # Mix with speech ducking (background audio volume 0.12, voiceover volume 1.0)
         cmd_final = [
             "ffmpeg", "-y",
             "-i", str(temp_concat),
@@ -414,10 +475,10 @@ class VideoAdRenderer:
             for i in range(total_samples):
                 t = i / sample_rate
                 # Subtle synth chords (D minor: 146.8Hz, 174.6Hz, 220Hz)
-                left = 0.3 * math.sin(2 * math.pi * 146.8 * t) + 0.2 * math.sin(2 * math.pi * 220.0 * t)
-                right = 0.3 * math.sin(2 * math.pi * 174.6 * t) + 0.2 * math.sin(2 * math.pi * 261.6 * t)
-                s_l = int(left * 4000.0)
-                s_r = int(right * 4000.0)
+                left = 0.25 * math.sin(2 * math.pi * 146.8 * t) + 0.15 * math.sin(2 * math.pi * 220.0 * t)
+                right = 0.25 * math.sin(2 * math.pi * 174.6 * t) + 0.15 * math.sin(2 * math.pi * 261.6 * t)
+                s_l = int(left * 3500.0)
+                s_r = int(right * 3500.0)
                 frames.extend(struct.pack("<hh", s_l, s_r))
             wav_file.writeframes(frames)
         return out_path
